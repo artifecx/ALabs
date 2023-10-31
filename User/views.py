@@ -3,6 +3,9 @@ from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
+
+from ALabs import settings
 from .forms import UserRegistrationForm, UserLoginForm
 
 
@@ -34,5 +37,19 @@ class CustomLoginView(LoginView):
     template_name = 'login.html'
 
     def form_valid(self, form):
+        remember_me = self.request.POST.get('remember_me')
+        if remember_me:
+            self.request.session.set_expiry(settings.REMEMBER_ME_SESSION_DURATION)
+        else:
+            self.request.session.set_expiry(0)  # Use the value from SESSION_COOKIE_AGE
         login(self.request, form.get_user())
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+
+@login_required
+def index(request):
+    # Your view logic here
+    return render(request, 'index.html')
