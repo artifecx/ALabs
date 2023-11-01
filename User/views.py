@@ -3,7 +3,6 @@ from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.decorators import login_required
 
 from ALabs import settings
 from .forms import UserRegistrationForm, UserLoginForm
@@ -47,9 +46,3 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('index')
-
-
-@login_required
-def index(request):
-    # Your view logic here
-    return render(request, 'index.html')
