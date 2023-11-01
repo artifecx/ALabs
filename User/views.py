@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 from ALabs import settings
 from .forms import UserRegistrationForm, UserLoginForm
@@ -42,7 +43,25 @@ class CustomLoginView(LoginView):
         else:
             self.request.session.set_expiry(0)  # Use the value from SESSION_COOKIE_AGE
         login(self.request, form.get_user())
+        self.request.session['username'] = form.cleaned_data.get('username')
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('index')
+        return reverse_lazy('dashboard')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+
+@login_required
+def dashboard(request):
+    user = request.user
+    return render(request, 'dashboard.html', {'user': user})
+
+
+@login_required
+def home(request):
+    # auto redirect to dashboard when logged in
+    return redirect('dashboard')

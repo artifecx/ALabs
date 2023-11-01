@@ -89,6 +89,7 @@ DATABASES = {
         'PORT': os.environ.get('PORT'),
     }
 }
+# this is for cloud hosted postgresql database, comment to use local
 database_url = os.environ.get('DATABASE_URL')
 DATABASES['default'] = dj_database_url.parse(database_url)
 
@@ -111,6 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# user authentication for sessions
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 # custom user implementation
 AUTH_USER_MODEL = 'User.CustomUser'
 
@@ -123,14 +129,13 @@ EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', 'False').lower() == 'true'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-# change later
-LOGIN_REDIRECT_URL = '/User/login'
-
 # user not signed in
-LOGIN_URL = '/User/login'
+LOGIN_URL = '/login/'
 
-# default session duration // no remember me
-SESSION_COOKIE_AGE = 0
+LOGIN_REDIRECT_URL = '/dashboard/'
+
+# default session duration, no remember me, 1 hour in seconds
+SESSION_COOKIE_AGE = 60 * 60
 
 # remember me, 30 days in seconds
 REMEMBER_ME_SESSION_DURATION = 30 * 24 * 60 * 60
