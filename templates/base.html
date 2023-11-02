@@ -8,10 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div id="navigation" style="background-color: black; color: red; text-align: center; padding: 10px;">
-        Site is currently in production, this is not the final look.
-    </div>
-
     <div id="particle-canvas"></div>
     <div class="centered-content">
         <h2>{% block heading %}{% endblock %}</h2>
@@ -19,6 +15,10 @@
         {% endblock %}
         <br>
         <a href="{% block link_url %}{% endblock %}">{% block link_text %}{% endblock %}</a>
+
+        <br><br><div id="navigation" style="color: red; text-align: center; padding: 10px;">
+            Site is currently in production, this is not the final look.
+        </div>
     </div>
 
     <script src="{% static 'js/script.js' %}"></script>
