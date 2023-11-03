@@ -137,7 +137,14 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # user not signed in
 LOGIN_URL = '/login/'
 
+# user signed in
 LOGIN_REDIRECT_URL = '/dashboard/'
+
+# filesystem path to the directory that will hold media.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# the base URL for media files.
+MEDIA_URL = '/media/'
 
 # default session duration, no remember me, 1 hour in seconds
 SESSION_COOKIE_AGE = 60 * 60

@@ -1,12 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
+    <style>
+        .profile-picture-container {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .profile-picture {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
 </head>
 <body>
     <h1>Main Page</h1>
-    <p>Hello, {{ user.username }}!</p>
+    <p>Hello, {{ user.username }}!
+
+    <div class="profile-picture-container">
+        {% if user.profile_picture %}
+        <a href="{% url 'dashboard' %}">
+            <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+        </a>
+        {% else %}
+            <a href="{% url 'dashboard' %}">
+                <img src="{% static 'img/default_profile_picture.jpg' %}" alt="Default Profile Picture" class="profile-picture">
+            </a>
+        {% endif %}
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Upload Profile Picture">
+    </form>
+
     <a href="{% url 'logout' %}">Logout</a>
 </body>
 </html>
