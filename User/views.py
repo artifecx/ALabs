@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from django.urls import reverse_lazy
-from django.contrib.auth import login
+from django.urls import reverse_lazy, reverse
+from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
+from django.utils.decorators import method_decorator
+
+from ALabs import settings
+from ALabs.utils.decorators import redirect_if_logged_in_class
 from .forms import UserRegistrationForm, UserLoginForm
 
 
 # Create your views here.
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -29,10 +35,25 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+@method_decorator(redirect_if_logged_in_class, name='dispatch')
 class CustomLoginView(LoginView):
     authentication_form = UserLoginForm
     template_name = 'login.html'
 
     def form_valid(self, form):
+        remember_me = self.request.POST.get('remember_me')
+        if remember_me:
+            self.request.session.set_expiry(settings.REMEMBER_ME_SESSION_DURATION)
+        else:
+            self.request.session.set_expiry(0)  # Use the value from SESSION_COOKIE_AGE
         login(self.request, form.get_user())
+        self.request.session['username'] = form.cleaned_data.get('username')
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('dashboard')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')

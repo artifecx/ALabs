@@ -1,18 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALabs | {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div id="particle-canvas"></div>
+    <div class="centered-content">
+        <h2>{% block heading %}{% endblock %}</h2>
+        {% block content %}
+        {% endblock %}
+        <br>
+        <a href="{% block link_url %}{% endblock %}">{% block link_text %}{% endblock %}</a>
 
-    <h2>{% block heading %}{% endblock %}</h2>
+        <br><br><div id="navigation" style="color: red; text-align: center; padding: 10px;">
+            Site is currently in production, this is not the final look.
+        </div>
+    </div>
 
-    {% block content %}
-    {% endblock %}
-
-    <br><a href="{% block link_url %}{% endblock %}">{% block link_text %}{% endblock %}</a>
-
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
