@@ -19,12 +19,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from ALabs import views
-
 urlpatterns = [
-    path('', views.home, name='home'),
     path('', include('User.urls')),
-    path('dashboard/', views.dashboard, name='dashboard'),
 ]
 
 if settings.ADMIN_ENABLED:
