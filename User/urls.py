@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .api import logout_view, dashboard, home, user_registration_view, custom_login_view
+from .api import *
 
 urlpatterns = [
     path('register/', user_registration_view, name='user-registration'),
