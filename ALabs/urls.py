@@ -19,8 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import index
+
 urlpatterns = [
     path('', include('User.urls')),
+    path('index/', index, name='index') # TODO: remove later
 ]
 
 if settings.ADMIN_ENABLED:
