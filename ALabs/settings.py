@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'User',
 ]
-
 if ADMIN_ENABLED:
     INSTALLED_APPS.append('django.contrib.admin')
 
@@ -63,6 +62,10 @@ MIDDLEWARE = [
 ]
 # For development, allows all origins.
 CORS_ALLOW_ALL_ORIGINS = True if ADMIN_ENABLED else False
+
+REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framework.permissions.AllowAny',
+]}
 
 ROOT_URLCONF = 'ALabs.urls'
 
@@ -94,13 +97,12 @@ DATABASES = {
         'NAME': os.environ.get('NAME'),
         'USER': os.environ.get('USER'),
         'PASSWORD': os.environ.get('PASSWORD'),
-        'HOST': os.environ.get('HOST'),
-        'PORT': os.environ.get('PORT'),
     }
 }
-# this is for cloud hosted postgresql database, comment to use local
-database_url = os.environ.get('DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse(database_url)
+# this is for cloud hosted postgresql database, development will use local
+if not ADMIN_ENABLED:
+    database_url = os.environ.get('DATABASE_URL')
+    DATABASES['default'] = dj_database_url.parse(database_url)
 
 
 # Password validation
@@ -145,7 +147,7 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 
 # filesystem path to the directory that will hold media.
-MEDIA_ROOT = os.path.join(BASE_DIR, 'ALabs/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'ALabs/media') # TODO: fix file structure
 
 # the base URL for media files.
 MEDIA_URL = '/media/'
@@ -173,10 +175,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ALabs/static')] # TODO: fix file structure
 
 # if not DEBUG:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'ALabs/staticfiles')
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/staticfiles')
 #     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type

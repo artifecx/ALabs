@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout, login
 from django.core.mail import send_mail
 
-from .serializers import UserProfileSerializer, UserRegistrationSerializer
+from .serializers import *
 from ALabs import settings
 
 
@@ -43,7 +43,7 @@ def logout_view(request):
 
 
 @api_view(['POST', 'GET'])
-def user_registration_view(request, format=None):
+def user_registration_view(request):
     if request.user.is_authenticated:
         # TODO: add javascript to redirect user to dashboard client-side after a few seconds
         return Response({'detail': 'User is already authenticated. Redirecting to the dashboard...', 'redirect': '/dashboard'}, status=status.HTTP_400_BAD_REQUEST)
