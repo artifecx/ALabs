@@ -35,59 +35,53 @@ def home(request):
     return redirect('dashboard')
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def logout_view(request):
     logout(request)
     return Response({'message': 'Successfully logged out.'}, status=status.HTTP_200_OK)
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
 def user_registration_view(request):
     if request.user.is_authenticated:
         # TODO: add javascript to redirect user to dashboard client-side after a few seconds
         return Response({'detail': 'User is already authenticated. Redirecting to the dashboard...', 'redirect': '/dashboard'}, status=status.HTTP_400_BAD_REQUEST)
 
-    if request.method == 'POST':
-        serializer = UserRegistrationSerializer(data=request.data)
+    serializer = UserRegistrationSerializer(data=request.data)
 
-        if serializer.is_valid():
-            user = serializer.save()
+    if serializer.is_valid():
+        user = serializer.save()
 
-            # Send a confirmation email
-            subject = 'Registration Confirmation'
-            message = 'Test email'
-            from_email = 'a.labsinnovations@gmail.com'
-            recipient_list = [user.email]
-            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        # Send a confirmation email
+        subject = 'Registration Confirmation'
+        message = 'Test email'
+        from_email = 'a.labsinnovations@gmail.com'
+        recipient_list = [user.email]
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
 
-            return Response({'detail': 'Registration successful. Please check your email.'}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    return Response({'detail': 'Registration form'}, status=status.HTTP_200_OK)
+        return Response({'detail': 'Registration successful. Please check your email.'}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
 def custom_login_view(request):
     if request.user.is_authenticated:
         # TODO: add javascript to redirect user to dashboard client-side after a few seconds
         return Response({'detail': 'User is already authenticated. Redirecting to the dashboard...', 'redirect': '/dashboard'}, status=status.HTTP_400_BAD_REQUEST)
 
-    if request.method == 'POST':
-        authentication_form = AuthenticationForm(data=request.data)
-        if authentication_form.is_valid():
-            user = authentication_form.get_user()
-            login(request, user)
-            username = user.username
+    authentication_form = AuthenticationForm(data=request.data)
+    if authentication_form.is_valid():
+        user = authentication_form.get_user()
+        login(request, user)
+        username = user.username
 
-            remember_me = request.data.get('remember_me')
-            if remember_me:
-                request.session.set_expiry(settings.REMEMBER_ME_SESSION_DURATION)
-            else:
-                request.session.set_expiry(0)  # Use the value from SESSION_COOKIE_AGE
+        remember_me = request.data.get('remember_me')
+        if remember_me:
+            request.session.set_expiry(settings.REMEMBER_ME_SESSION_DURATION)
+        else:
+            request.session.set_expiry(0)  # Use the value from SESSION_COOKIE_AGE
 
-            return Response({'username': username, 'detail': 'Login successful'}, status=status.HTTP_200_OK)
+        return Response({'username': username, 'detail': 'Login successful'}, status=status.HTTP_200_OK)
 
-        return Response(authentication_form.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    return Response({'detail': 'Login form'}, status=status.HTTP_200_OK)
+    return Response(authentication_form.errors, status=status.HTTP_400_BAD_REQUEST)
