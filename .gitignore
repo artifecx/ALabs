@@ -1,6 +1,11 @@
 .env
 .idea/
 staticfiles/
+ALabs/
+User/
+build.sh
+manage.py
+requirements.txt
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #
