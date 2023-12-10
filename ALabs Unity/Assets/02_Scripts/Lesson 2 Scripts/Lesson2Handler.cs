@@ -36,7 +36,7 @@ public class Lesson2Handler : MonoBehaviour
         }
     }
 
-    public void PageBack()
+    /*public void PageBack()
     {
         if(currAlphaTopic > 0)
         {
@@ -56,7 +56,7 @@ public class Lesson2Handler : MonoBehaviour
             maincanvas.SetActive(true);
             canvas[0].SetActive(false);
         }
-    }
+    }*/
 }
 
 
