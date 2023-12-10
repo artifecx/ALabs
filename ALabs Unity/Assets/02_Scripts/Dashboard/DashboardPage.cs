@@ -18,22 +18,21 @@ public class DashboardPage : MonoBehaviour
     [Header("Settings")]
     [SerializeField] GameObject SettingsCanvas;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Lesson 1")]
+    [SerializeField] GameObject Lesson1Canvas;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Level 2")]
+    [SerializeField] GameObject Level2Canvas;
+
+    #region DASHBOARD FUNCTIONS
     public void OpenDashboardPage()
     {
         DashboardCanvas.SetActive(true);
         LessonsCanvas.SetActive(false);
         SettingsCanvas.SetActive(false);
+
+        Lesson1Canvas.SetActive(false);
+        Level2Canvas.SetActive(false);
     }
 
     public void OpenSettingsPage()
@@ -41,6 +40,9 @@ public class DashboardPage : MonoBehaviour
         DashboardCanvas.SetActive(false);
         LessonsCanvas.SetActive(false);
         SettingsCanvas.SetActive(true);
+
+        Lesson1Canvas.SetActive(false);
+        Level2Canvas.SetActive(false);
     }
 
     public void OpenLessonsPage()
@@ -48,13 +50,22 @@ public class DashboardPage : MonoBehaviour
         DashboardCanvas.SetActive(false);
         LessonsCanvas.SetActive(true);
         SettingsCanvas.SetActive(false);
-    }
 
-    public void OpenLessonOne()
+        Lesson1Canvas.SetActive(false);
+        Level2Canvas.SetActive(false);
+    }
+    #endregion
+
+    #region LESSONS BTN -> LESSONS CANVAS -> LEVEL 1 & LEVEL 2 BUTTONS
+    public void OpenLessonOneIntro()
     {
         SceneManager.LoadScene("Lesson1-Intro");
     }
 
+    public void OpenLessonOneGameImple()
+    {
+        SceneManager.LoadScene("Lesson1-GameImple");
+    }
     public void SceneLoaderButtons(string scene) 
     {
         SceneManager.LoadScene(scene);
@@ -64,4 +75,18 @@ public class DashboardPage : MonoBehaviour
     {
         Application.Quit();
     }
+    #endregion
+
+
+    #region LESSONS FUNCTIONS
+   public void OpenLesson1Canvas()
+    {
+        DashboardCanvas.SetActive(false);
+        LessonsCanvas.SetActive(false);
+        SettingsCanvas.SetActive(false);
+
+        Lesson1Canvas.SetActive(true);
+        Level2Canvas.SetActive(false);
+    }
+    #endregion
 }
