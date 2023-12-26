@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,20 +16,22 @@ using System.Windows.Shapes;
 namespace ALabs
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingsPage : Page
     {
-        public MainWindow()
+        private readonly MainWindow mainWindow;
+
+        public SettingsPage(MainWindow mainWindow)
         {
             InitializeComponent();
-            mainFrame.Navigate(new MainPage(this));
+            this.mainWindow = mainWindow;
         }
 
-        public void CloseMainWindow()
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Close the main window
-            Close();
+            // Go back to MainPage
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
         }
     }
 }

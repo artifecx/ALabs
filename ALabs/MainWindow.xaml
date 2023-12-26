@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ALabs"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ALabs" Height="1080" Width="1920"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="NoResize">
     <Grid>
-
+        <Frame x:Name="mainFrame"/>
     </Grid>
 </Window>
