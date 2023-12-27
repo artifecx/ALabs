@@ -17,7 +17,7 @@
             <!-- Distance between upper and lower content -->
             <RowDefinition Height="40"/>
             <!-- Lower content -->
-            <RowDefinition Height="650"/>
+            <RowDefinition Height="550"/>
             <!-- Distance lower content and bottom -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -39,11 +39,12 @@
         </Grid>
 
         <!-- Border lines -->
-        <Border Grid.Row="1" BorderBrush="black" BorderThickness="2" Width="1400">
+        <Border Grid.Row="1" BorderBrush="black" BorderThickness="2" Width="1300">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
         </Border>
+        
         <Border Grid.Row="3" BorderBrush="black" BorderThickness="2" Width="1200">
             <Border.Effect>
                 <DropShadowEffect/>
@@ -52,11 +53,11 @@
 
         <!-- Lower Content -->
         <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Play" Margin="0,0,0,10" Width="600" Height="100" Click="PlayButton_Click"/>
-            <Button Content="Lessons" Margin="0,0,0,10" Width="600" Height="100" Click="LessonsButton_Click"/>
-            <Button Content="Settings" Margin="0,0,0,60" Width="600" Height="100" Click="SettingsButton_Click"/>
+            <Button Content="Play" Margin="0,0,0,10" Width="600" Height="80" Click="PlayButton_Click"/>
+            <Button Content="Lessons" Margin="0,0,0,10" Width="600" Height="80" Click="LessonsButton_Click"/>
+            <Button Content="Settings" Margin="0,0,0,60" Width="600" Height="80" Click="SettingsButton_Click"/>
 
-            <Button Content="Quit" Width="600" Height="100" Click="QuitButton_Click"/>
+            <Button Content="Quit" Width="600" Height="50" Click="QuitButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>
