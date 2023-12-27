@@ -9,6 +9,72 @@
       Title="LessonsPage">
 
     <Grid>
-        <Button Content="Back" Width="600" Height="100" Click="BackButton_Click"/>
+        <Grid.RowDefinitions>
+            <!-- Distance between content and top -->
+            <RowDefinition Height="60"/>
+            <!-- Upper content -->
+            <RowDefinition Height="150"/>
+            <!-- Distance between upper and lower content -->
+            <RowDefinition Height="40"/>
+            <!-- Lower content -->
+            <RowDefinition Height="550"/>
+            <!-- Distance lower content and bottom -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Upper Content | Header -->
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <!-- Left content -->
+                <ColumnDefinition Width="Auto"/>
+                <!-- Space between -->
+                <ColumnDefinition Width="1000"/>
+                <!-- Right content -->
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Welcome, user!"/>
+            <Label Content=" " Grid.Column="1"/>
+            <Label Content="Total Points: " Grid.Column="2"/>
+        </Grid>
+
+        <!-- Border lines -->
+        <Border Grid.Row="1" BorderBrush="black" BorderThickness="2" Width="1300">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
+        </Border>
+
+        <Border Grid.Row="3" BorderBrush="black" BorderThickness="2" Width="1200">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
+        </Border>
+        
+        <!-- Lower Content -->
+        <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- <Grid Margin="20,0,0,40" HorizontalAlignment="Center" VerticalAlignment="Center"> -->
+                <!-- <TextBlock Text="Lessons" FontSize="36"/> -->
+            <!-- </Grid> -->
+            <!-- Lesson 1 | Button -->
+            <Button Width="600" Height="80" Click="Lesson1_Click" HorizontalContentAlignment="Left" Margin="0,0,0,10">
+                <Grid Margin="20,0,0,0">
+                    <TextBlock Text="Lesson 1 | Introduction to Automata Theory"/>
+                </Grid>
+            </Button>
+            <!-- Lesson 2 | Button -->
+            <Button Width="600" Height="80" Click="Lesson2_Click" HorizontalContentAlignment="Left" Margin="0,0,0,10">
+                <Grid Margin="20,0,0,0">
+                    <TextBlock Text="Lesson 2 | Regular Expressions"/>
+                </Grid>
+            </Button>
+            <!-- Lesson 3 | Button -->
+            <Button Width="600" Height="80" Click="Lesson3_Click" HorizontalContentAlignment="Left" Margin="0,0,0,60">
+                <Grid Margin="20,0,0,0">
+                    <TextBlock Text="Lesson 3 | Non-deterministic Automata"/>
+                </Grid>
+            </Button>
+            <Button Content="Back" Width="600" Height="50" Click="BackButton_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

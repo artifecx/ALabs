@@ -33,5 +33,21 @@ namespace ALabs
             // Go back to MainPage
             mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
         }
+        private void Lesson1_Click(object sender, RoutedEventArgs e)
+        {
+            // Go back to MainPage
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+        }
+        private void Lesson2_Click(object sender, RoutedEventArgs e)
+        {
+            // Go back to MainPage
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+        }
+
+        private void Lesson3_Click(object sender, RoutedEventArgs e)
+        {
+            // Go back to MainPage
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+        }
     }
 }
