@@ -71,7 +71,7 @@
             <!-- Lesson 3 | Button -->
             <Button Width="600" Height="80" Click="Lesson3_Click" HorizontalContentAlignment="Left" Margin="0,0,0,60">
                 <Grid Margin="20,0,0,0">
-                    <TextBlock Text="Lesson 3 | Non-deterministic Automata"/>
+                    <TextBlock Text="Lesson 3 | Non-deterministic Finite Automata"/>
                 </Grid>
             </Button>
             <Button Content="Back" Width="600" Height="50" Click="BackButton_Click"/>

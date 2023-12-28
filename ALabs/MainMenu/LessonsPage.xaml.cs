@@ -35,18 +35,18 @@ namespace ALabs
         }
         private void Lesson1_Click(object sender, RoutedEventArgs e)
         {
-            // Go back to MainPage
+            // Go to Intro Lesson
             mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
         }
         private void Lesson2_Click(object sender, RoutedEventArgs e)
         {
-            // Go back to MainPage
+            // Go to RegEx Lesson
             mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
         }
 
         private void Lesson3_Click(object sender, RoutedEventArgs e)
         {
-            // Go back to MainPage
+            // Go to NFA Lesson
             mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
         }
     }
