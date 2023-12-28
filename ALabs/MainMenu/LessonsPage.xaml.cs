@@ -1,4 +1,6 @@
-﻿using ALabs.MainMenu;
+﻿using ALabs.LessonIntro;
+using ALabs.LessonNFA;
+using ALabs.LessonRegEx;
 using System;
 using System.Collections.Generic;
 using System.Linq;

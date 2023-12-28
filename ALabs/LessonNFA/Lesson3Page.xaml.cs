@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ALabs.MainMenu
+namespace ALabs.LessonNFA
 {
     /// <summary>
     /// Interaction logic for Lesson3Page.xaml

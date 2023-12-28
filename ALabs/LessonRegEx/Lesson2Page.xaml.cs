@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ALabs.MainMenu
+namespace ALabs.LessonRegEx
 {
     /// <summary>
     /// Interaction logic for Lesson2Page.xaml
