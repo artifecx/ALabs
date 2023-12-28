@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ALabs.MainMenu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,18 +37,17 @@ namespace ALabs
         private void Lesson1_Click(object sender, RoutedEventArgs e)
         {
             // Go to Intro Lesson
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
         }
         private void Lesson2_Click(object sender, RoutedEventArgs e)
         {
             // Go to RegEx Lesson
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson2Page(mainWindow));
         }
-
         private void Lesson3_Click(object sender, RoutedEventArgs e)
         {
             // Go to NFA Lesson
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson3Page(mainWindow));
         }
     }
 }
