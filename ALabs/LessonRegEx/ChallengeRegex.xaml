@@ -1,0 +1,37 @@
+﻿<Page x:Class="ALabs.LessonRegEx.ChallengeRegex"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ALabs.LessonRegEx"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="ChallengeRegex">
+
+    <Grid>
+        <Button Content="Level 1" FontSize="35" FontWeight="ExtraBold" Name="btnl1" Width="200" Height="50" Margin="-1200,-750,0,0" Click="btnl1_Click" />
+        <Button Content="Level 2" FontSize="35" FontWeight="ExtraBold" Name="btnl2" Width="200" Height="50" Margin="-750,-750,0,0" IsEnabled="True"  Click="btnl2_Click" Visibility="Hidden"/>
+        <Button Content="Level 3" FontSize="35" FontWeight="ExtraBold" Name="btnl3" Width="200" Height="50" Margin="-300,-750,0,0" IsEnabled="True" Click="btnl3_Click" Visibility="Hidden"/>
+        <Button Content="Level 4" FontSize="35" FontWeight="ExtraBold" Name="btnl4" Width="200" Height="50" Margin="150,-750,0,0" IsEnabled="True" Click="btnl4_Click" Visibility="Hidden"/>
+        <Button Content="Level 5" FontSize="35" FontWeight="ExtraBold" Name="btnl5" Width="200" Height="50" Margin="600,-750,0,0" IsEnabled="True" Click="btnl5_Click" Visibility="Hidden"/>
+        <Button Content="Level 6" FontSize="35" FontWeight="ExtraBold" Name="btnl6" Width="200" Height="50" Margin="1050,-750,0,0" IsEnabled="True" Click="btnl6_Click" Visibility="Hidden"/>
+
+        <Button Content="Level 7" FontSize="35" FontWeight="ExtraBold" Name="btnl7" Width="200" Height="50" Margin="-1300,-600,0,0" IsEnabled="True" Click="btnl7_Click" Visibility="Hidden"/>
+        <Button Content="Level 8" FontSize="35" FontWeight="ExtraBold" Name="btnl8" Width="200" Height="50" Margin="-800,-600,0,0" IsEnabled="True" Click="btnl8_Click" Visibility="Hidden"/>
+        <Button Content="Level 9" FontSize="35" FontWeight="ExtraBold" Name="btnl9" Width="200" Height="50" Margin="-300,-600,0,0" IsEnabled="True" Click="btnl9_Click" Visibility="Hidden"/>
+        <Button Content="Level 10" FontSize="35" FontWeight="ExtraBold" Name="btnl10" Width="200" Height="50" Margin="200,-600,0,0" IsEnabled="True" Click="btnl10_Click" Visibility="Hidden"/>
+        <Button Content="Level 11" FontSize="35" FontWeight="ExtraBold" Name="btnl11" Width="200" Height="50" Margin="700,-600,0,0" IsEnabled="True" Click="btnl11_Click" Visibility="Hidden"/>
+        <Button Content="Level 12" FontSize="35" FontWeight="ExtraBold" Name="btnl12" Width="200" Height="50" Margin="1200,-600,0,0" IsEnabled="True" Click="btnl12_Click" Visibility="Hidden"/>
+
+        <Button Content="Check" Width="600" Height="50" Margin="10,550,0,0" Name="btnCheck" Click="btnCheck_Click"/>
+        <Button Content="Back" Width="600" Height="50" Margin="10,700,0,0" Name="btnBack" Click="BackButton_Click"/>
+        <TextBox Margin="10,-300,20,20" TextWrapping="Wrap"  Height="120" Name="tb1" IsEnabled="False" FontSize="40" VerticalAlignment="Center" />
+        <TextBox Margin="10,0,20,20" TextWrapping="Wrap" Height="100" Name="tbAns"  FontSize="30" VerticalAlignment="Center" />
+
+        <ProgressBar x:Name="myProgressBar" Width="1000" Height="50" Margin="10,275,20,20"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
+<Run Text="{Binding ElementName=myProgressBar, Path=Value, StringFormat={}{0:0}%}" />
+        </TextBlock>
+
+    </Grid>
+</Page>

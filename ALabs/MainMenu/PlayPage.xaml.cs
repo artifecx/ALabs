@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ALabs.LessonRegEx;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,12 @@ namespace ALabs
         {
             // Go back to MainPage
             mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+        }
+
+        private void RegexChallenge_Click(object sender, RoutedEventArgs e)
+        {
+            // Go back to MainPage
+            mainWindow.mainFrame.Navigate(new ChallengeRegex(mainWindow));
         }
     }
 }
