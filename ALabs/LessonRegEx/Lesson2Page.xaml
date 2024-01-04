@@ -9,12 +9,12 @@
       Title="Lesson2Page">
 
     <Grid>
-        <Button Content="1. Introduction: What are Regular Expressions?" Click ="btn1Click" Width="600" Height="50" Margin="10,-600,0,0" Name="btn1" IsEnabled="True"/>
-        <Button Content="2. Common Symbols: +, *, and parentheses" Click ="btn2Click" Width="600" Height="50" Margin="10,-400,0,0" Name="btn2" IsEnabled="False"/>
-        <Button Content="3. Basic Patterns" Width="600" Height="50" Margin="10,-200,0,0" Click ="btn3Click" Name="btn3" IsEnabled="False"/>
-        <Button Content="4. Recap" Width="600" Height="50" Margin="10,0,0,0" Click ="btn4Click" Name="btn4" IsEnabled="False"/>
-        <Button Content="5. Pracice" Width="600" Height="50" Margin="10,200,0,0" Click ="btn5Click" Name="btn5" IsEnabled="False"/>
-        
+        <Button Content="1. Introduction: What are Regular Expressions?" Click ="btn1Click" Width="300" Height="50" Margin="-1100,-600,0,0" Name="btn1" IsEnabled="True"/>
+        <Button Content="2. Common Symbols: +, *, and parentheses" Click ="btn2Click" Width="300" Height="50" Margin="-1100,-400,0,0" Name="btn2" IsEnabled="False"/>
+        <Button Content="3. Basic Patterns" Width="300" Height="50" Margin="-1100,-200,0,0" Click ="btn3Click" Name="btn3" IsEnabled="False"/>
+        <Button Content="4. Recap" Width="300" Height="50" Margin="-1100,0,0,0" Click ="btn4Click" Name="btn4" IsEnabled="False"/>
+        <Button Content="5. Pracice" Width="300" Height="50" Margin="-1100,200,0,0" Click ="btn5Click" Name="btn5" IsEnabled="False"/>
+        <TextBox TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="30" Margin="350,-150,20,20" TextWrapping="Wrap"  Width="1000" Height="500" Name="tbL" IsEnabled="False" VerticalAlignment="Center" />
         <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="10,600,0,0"/>
     </Grid>
 </Page>
