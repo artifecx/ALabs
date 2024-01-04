@@ -35,17 +35,7 @@ namespace ALabs.LessonRegEx
         {
             mainWindow.mainFrame.Navigate(new PlayPage(mainWindow));
         }
-        private void btnNext_Click(object sender, RoutedEventArgs e)
-        {
-            int r1 = random.Next(1, 7);
-            int progress = (int) myProgressBar.Value;
 
-            if(l == 1)
-            {
-
-            }
-         
-        }
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
 

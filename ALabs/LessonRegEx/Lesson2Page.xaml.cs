@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ALabs.LessonRegEx
 {
@@ -37,22 +38,28 @@ namespace ALabs.LessonRegEx
 
         private async void btn1Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Regex is a powerful tool for finding specific patterns in text.\r\nIn our regex adventure, we'll explore a simplified world with just two alphabets: 'a' and 'b'.\r\nThe symbols which we are going to use are: +, *, and parentheses\r\n", "What are Regular Expressions?");
+            String text = "\nRegex is a powerful tool for finding specific patterns in text.\r\n\nIn our regex adventure, we'll explore a simplified world with just two alphabets: 'a' and 'b'.\r\n\nThe symbols which we are going to use are: +, *, and parentheses\r\n";
+            tbL.Text = text ;
+            tbL.FontSize = 25;
             btn2.IsEnabled = true;
         }
         private void btn2Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("+ (Or):\r \"Choose either 'a' or 'b'\"\r\nExamples: a+b, b+a.\r\n\n\n* (Kleene Star):\r\nIt's like saying, \"I want 'a' or 'b' to appear as many times as I want, including zero times.\"\r\nExamples: b*, a*.\r\n\n\nParentheses ():\r\nThey help us group things together, adding flexibility.\r\nExamples: (a+b)*, (a*b)+.", "2. Common Symbols: +, *, and parentheses");
+            String text = "+ (Or):\r \"Choose either 'a' or 'b'\"\r\nExamples: a+b, b+a.\r\n\n\n* (Kleene Star):\r\nIt is the set of all Strings that can be written zero to infinite number of times\r\nExample: \nb* can be:\n bb, bbb, b or simply {}(empty).\r\n\n\nParentheses ():\r\nThey help us group things together, adding flexibility.\r\nExamples: (a+b)*, (a*b).";
+            tbL.Text = text;
             btn3.IsEnabled = true;
         }
         private void btn3Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Literal Matching:\r\n\r\nMatches 'a' or 'b' exactly.\r\nExamples: a, b.\r\nAlternation:\r\n\r\nUse '+' for 'or' to match either 'a' or 'b'.\r\nExamples: a+b, b+a.\r\nZero or More Occurrences:\r\n\r\nUse '*' to match zero or more occurrences.\r\nExamples: b*, a*.\r\nGrouping with Parentheses:\r\n\r\nParentheses help us group expressions.\r\nExamples: (a+b)*, (a*b)+.", "3. Basic Patterns");
+            String text = "Literal Matching:\r\n\r\nMatches 'a' or 'b' exactly.\r\nExamples: a, b.\r\nAlternation:\r\n\r\nUse '+' for 'or' to match either 'a' or 'b'.\r\nExamples: a+b, b+a.\r\nZero or More Occurrences:\r\n\r\nUse '*' to match zero or more occurrences.\r\nExamples: b*, a*.\r\nGrouping with Parentheses:\r\n\r\nParentheses help us group expressions.\r\nExamples: (a+b)*, (a*b).";
+            tbL.Text = text;
             btn4.IsEnabled = true;
         }
         private void btn4Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("+ (Or):\r\nChoose between 'a' or 'b'.\r\n\r\n* (Kleene Star):\r\nChoosing the alphabet 0 or infinite number of times\r\n\r\nParentheses ():\r\nFor grouping alphabets\r\n\r\nBasic Patterns:\r\nLiteral Matching:\r\nMatches 'a' or 'b' exactly.\r\n\r\nAlternation:\r\nUse '+' for 'or' to match either 'a' or 'b'.\r\n\r\nZero or More Occurrences:\r\nUse '*' to match zero or more occurrences.\r\n\r\nGrouping with Parentheses:\r\nParentheses help us organize expressions.\r\n\r\n", "4. Recap");
+            String text = "+ (Or):\r\nChoose between 'a' or 'b'.\r\n\r\n* (Kleene Star):\r\nChoosing the alphabet 0 or infinite number of times\r\n\r\nParentheses ():\r\nFor grouping alphabets\r\n\r\nBasic Patterns:\r\nLiteral Matching:\r\nMatches 'a' or 'b' exactly.\r\n\r\nAlternation:\r\nUse '+' for 'or' to match either 'a' or 'b'.\r\n\r\nZero or More Occurrences:\r\nUse '*' to match zero or more occurrences.\r\n\r\nGrouping with Parentheses:\r\nParentheses help us organize expressions.\r\n\r\n";
+            tbL.Text = text;
+            tbL.FontSize = 19;
             btn5.IsEnabled = true;
         }
         private void btn5Click(object sender, RoutedEventArgs e)
