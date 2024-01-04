@@ -9,6 +9,7 @@
       Title="PlayPage">
 
     <Grid>
-        <Button Content="Back" Width="600" Height="100" Click="BackButton_Click"/>
+        <Button Content="Regex Challenge" Margin="10,-500,0,0" Width="600" Height="100" Click="RegexChallenge_Click"/>
+        <Button Content="Back" Margin="10,700,0,0" Width="600" Height="100" Click="BackButton_Click"/>
     </Grid>
 </Page>

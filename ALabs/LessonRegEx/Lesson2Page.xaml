@@ -9,6 +9,12 @@
       Title="Lesson2Page">
 
     <Grid>
-        <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="100,353,100,47"/>
+        <Button Content="1. Introduction: What are Regular Expressions?" Click ="btn1Click" Width="600" Height="50" Margin="10,-600,0,0" Name="btn1" IsEnabled="True"/>
+        <Button Content="2. Common Symbols: +, *, and parentheses" Click ="btn2Click" Width="600" Height="50" Margin="10,-400,0,0" Name="btn2" IsEnabled="False"/>
+        <Button Content="3. Basic Patterns" Width="600" Height="50" Margin="10,-200,0,0" Click ="btn3Click" Name="btn3" IsEnabled="False"/>
+        <Button Content="4. Recap" Width="600" Height="50" Margin="10,0,0,0" Click ="btn4Click" Name="btn4" IsEnabled="False"/>
+        <Button Content="5. Pracice" Width="600" Height="50" Margin="10,200,0,0" Click ="btn5Click" Name="btn5" IsEnabled="False"/>
+        
+        <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="10,600,0,0"/>
     </Grid>
 </Page>
