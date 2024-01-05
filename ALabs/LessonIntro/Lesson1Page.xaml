@@ -10,12 +10,13 @@
       Title="Lesson1Page">
 
     <Grid>
-        <Button Content="Tutorial"                    Click ="btn1Click" Width="300" Height="50" Margin="-1100,-600,0,0" Name="btn1" IsEnabled="True"/>
-        <Button Content="Automata Theory Information" Click ="btn2Click" Width="300" Height="50" Margin="-1100,-400,0,0" Name="btn2" IsEnabled="False"/>
-        <Button Content="Challenge 1"                 Click ="btn3Click" Width="300" Height="50" Margin="-1100,-200,0,0" Name="btn3" IsEnabled="False"/>
-        <Button Content="Challenge 2"                 Click ="btn4Click" Width="300" Height="50" Margin="-1100,0,0,0"    Name="btn4" IsEnabled="False"/>
-        <Button Content="Challenge 3"                 Click ="btn5Click" Width="300" Height="50" Margin="-1100,200,0,0"  Name="btn5" IsEnabled="False"/>
-        <TextBox TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="30" Margin="350,-150,20,20" TextWrapping="Wrap"  Width="1000" Height="500" Name="tbL" IsEnabled="False" VerticalAlignment="Center" />
+        <Button Content="Tutorial"                    Click ="btn1Click" Width="300" Height="50" Margin="-1100,-600,0,0" Name="btn1" IsEnabled="True" MouseEnter="btn1_MouseEnter" MouseLeave="btn1_MouseLeave"/>
+        <Button Content="Challenge 1"                 Click ="btn3Click" Width="300" Height="50" Margin="-1100,-400,0,0" Name="btn3" IsEnabled="True" MouseEnter="btn3_MouseEnter" MouseLeave="btn3_MouseLeave"/>
+        <Button Content="Challenge 2"                 Click ="btn4Click" Width="300" Height="50" Margin="-1100,-200,0,0"    Name="btn4" IsEnabled="True" MouseEnter="btn4_MouseEnter" MouseLeave="btn4_MouseLeave"/>
+        <Button Content="Challenge 3"                 Click ="btn5Click" Width="300" Height="50" Margin="-1100,0,0,0"  Name="btn5" IsEnabled="True" MouseEnter="btn5_MouseEnter" MouseLeave="btn5_MouseLeave"/>
+        <Button Content="Automata Theory Information" Click ="btn2Click" Width="300" Height="50" Margin="-1100,200,0,0" Name="btn2" IsEnabled="True"/>
+        <TextBox  Padding="30" TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="20" Margin="350,-150,20,20" TextWrapping="Wrap"  Width="1000" Height="500" Name="tbL" IsReadOnly="True" VerticalAlignment="Center" VerticalScrollBarVisibility="Auto" />
         <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="10,600,0,0"/>
     </Grid>
 </Page>
+
