@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ALabs.LessonRegEx;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,43 @@ namespace ALabs.LessonNFA
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow));
+        }
+
+        private void btn1Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void btn2Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void btn3Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void btn4Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void btn5Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void btn6Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void btn7Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void prevClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void nextClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

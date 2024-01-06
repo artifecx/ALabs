@@ -9,6 +9,47 @@
       Title="Lesson3Page">
 
     <Grid>
-        <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="100,353,100,47"/>
+        <Grid.RowDefinitions>
+            <!-- Distance between content and top -->
+            <RowDefinition Height="80"/>
+            <!-- Main content -->
+            <RowDefinition Height="800"/>
+            <!-- Distance between main content and buttons-->
+            <RowDefinition Height="20"/>
+            <!-- Buttons below content -->
+            <RowDefinition Height="80"/>
+            <!-- Distance between lower buttons and bottom -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Content="&lt; Lessons" Width="100" Height="50" Click="BackButton_Click"/>
+            </StackPanel>
+            <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                <TextBlock VerticalAlignment="Center" Text="❤" FontSize="20" Foreground="Red" Name="Heart0"/>
+                <TextBlock VerticalAlignment="Center" Margin="25,0,0,0" Text="❤" FontSize="20" Foreground="Red" Name="Heart1"/>
+                <TextBlock VerticalAlignment="Center" Margin="50,0,0,0" Text="❤" FontSize="20" Foreground="Red" Name="Heart2"/>
+                <TextBlock VerticalAlignment="Center" Margin="75,0,0,0" Text="❤" FontSize="20" Foreground="Red" Name="Heart3"/>
+                <TextBlock VerticalAlignment="Center" Margin="100,0,0,0" Text="❤" FontSize="20" Foreground="Red" Name="Heart4"/>
+            </Grid>
+            <StackPanel Width="300" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button Content="1. Non-deterministic Finite Automata" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn1Click" Name="btn1" IsEnabled="True"/>
+                <Button Content="2. Concatenation" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn2Click" Name="btn2" IsEnabled="False"/>
+                <Button Content="3. Kleene Star" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn3Click" Name="btn3" IsEnabled="False"/>
+                <Button Content="4. Union" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn4Click" Name="btn4" IsEnabled="False"/>
+                <Button Content="5. Epsilon (e) symbol" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn5Click" Name="btn5" IsEnabled="False"/>
+                <Button Content="6. NFA Construction from a Regular Expression" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn6Click" Name="btn6" IsEnabled="False"/>
+                <Button Content="7. Practice" HorizontalContentAlignment="Left" Padding="20,0,0,0" Height="50" Click="btn7Click" Name="btn7" IsEnabled="False"/>
+            </StackPanel>
+            <TextBox Margin="350,40,0,0" TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="30" TextWrapping="Wrap" Width="1400" Height="750" Name="tbL" IsEnabled="False" Grid.RowSpan="4" Grid.Row="1" />
+        </Grid>
+        
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="&lt; Prev" Margin="350,0,1000,0" Width="100" Height="50" Click="prevClick" Name="btnPrev" IsEnabled="True"/>
+                <Button Content="Next &gt;" Width="100" Height="50" Click="nextClick" Name="btnNext" IsEnabled="True"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
