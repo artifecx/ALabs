@@ -168,14 +168,14 @@ namespace ALabs.LessonRegEx
             {
                 if (r1 == 1)
                 {
-                    if (ans == "aaa(a+b*)bb(a+b)*")
+                    if (ans == "aaa(a+b)*bb(a+b)*")
                     {
                         return true;
                     }
                 }
                 else
                 {
-                    if (ans == "bab(a+b*)bb(a+b)*")
+                    if (ans == "bab(a+b)*bb(a+b)*")
                     {
                         return true;
                     }
