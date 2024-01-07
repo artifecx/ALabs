@@ -25,239 +25,456 @@ namespace ALabs.LessonIntro
     {
         private readonly MainWindow mainWindow;
 
-        private List<string> textList = new List<string>
+        // This code is strictly and lazily made for this True/False quiz game.
+        // You can add as many questions as you want. Provided that you manually set the paths for the animations and assign the correct and incorrect answers
+
+        private List<Question> questionList = new List<Question>
         {   
             // 0
-            "Welcome to A-Labs!",
+            new Question("Automata theory is a branch of computer science that involves understanding and designing systems that follow specific patterns or rules.", true),
             // 1
-            "A place where you will start your journey\nin learning all about Automata Theory!",
+            new Question(" In automata theory, a \"state\" represents a specific position that a system occupies at any given time.", true),
             // 2
-            "For starters, what is Automata Theory all about?",
-            // 3
-            "Imagine you are dealing with building blocks\nfor computers and programming...",
-            // 4
-            "Automata Theory is like exploring the rules and structures \nthat controls these building blocks!",
-            // 5
-            "In this case, lets explore how Automata theory works by it down by 3 parts:\n\n"
-            + "1. State machines\n"
-            + "2. Transitions\n"
-            + "3. Input\n"
-            + "4. Finite Automaton (FA)\n",
-            //6
-            "State Machines:" +
-            "\n\nIn the context of automata theory, a \"state\" refers to a condition or situation\n"
-            + " in which a system or process can exist at a given point in time.",
-            // 7
-            "This is an example of a state.\n"
-            + "Normally, it does not look like this but for visualization purposes,\n"
-            + "it accompanies a condition wherein it accepts or unaccepts an input.",
-            // 8
-            "Transitions:"
-            + "\n\nThese refer to the changes in the state of a system\n"
-            + "based on certain events, inputs, or conditions.\n",
-            // 9
-            "They define how a system moves from one state to another, \n"
-            + "influencing its behavior or output.\n"
-            + "\nAs for now, these 'lines' will serve as our best example for transitioning inputs.",
-            // 10
-            "Inputs:\n\n"
-            + "In Automata Theory, an \"input\" refers to the symbols or signals that a \n"
-            + "system processes,triggering transitions between different states.",
-            // 11
-            "This circle traversing through the lines serves as the input for this machine.",
-            // 12
-            "Finite Automaton:\n\n"
-            + "A Finite Automaton is a mathematical model depicting a system with a \n"
-            + "limited set of states, transitions between these states, and inputs that prompt these transitions.",
-            // 13
-            "In this case, with all of the three (State, Transitions, and Input) combined, "
-            + "you have a Finite Automaton!",
-            //14
-            "Now that we have all of that out of the way,\n"
-            + "Let's have you challenge yourself to some quizzes!"
-
+            new Question("Transitions in automata theory describe the changes in the state of a system and are influenced by events, inputs, or conditions.", true),
+            new Question("...",false), // lazy debugging again 
+          
         };
 
-        private int currentIndex = 0;
-        private int charIndex = 0;
+        private int currentQuestionIndex = 0;
+        private int currentState = 0;
+        private int currentCharIndex = 0;
+
         private DispatcherTimer timer;
+
+        private DispatcherTimer dotTimer;
+        private int dotCount = 0;
+
+        // Flags
         private bool printingInProgress = false;
-        private int animationCounter = 0;
-        private bool StartToOneFinished, OneToTwoFinished, TwoToThreeFinished, ThreeToEndFinished = false;
+        private bool processingEvent = false;
+        private bool isAnimationInProgress = false;
+        private bool EndStateReached = false;
+
+        private int userScore = 0;
         public Challenge1Intro(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            InitializeTvScreen();
-            RunAnimationLoop();
+            True1.Click += True1_Click;
+            False1.Click += False1_Click;
+            True2.Click += True2_Click;
+            False2.Click += False2_Click;
+            True3.Click += True3_Click;
+            False3.Click += False3_Click;
+
+            InitializeAnimation();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void InitializeAnimation()
         {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
-        }
+            DotAnimationTimer();
+            if (isAnimationInProgress)
+                return;
 
-        private void FinishTutorial_Click(object sender, RoutedEventArgs e)
-        {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
-        }
+            isAnimationInProgress = true;
 
-        private async void RunAnimationLoop()
-        {
-            while (true)
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            True1.IsEnabled = false;
+            False1.IsEnabled = false;
+            True2.IsEnabled = false;
+            False2.IsEnabled = false;
+            True3.IsEnabled = false;
+            False3.IsEnabled = false;
+            True2.Visibility = Visibility.Collapsed;
+            False2.Visibility = Visibility.Collapsed;
+            True3.Visibility = Visibility.Collapsed;
+            False3.Visibility = Visibility.Collapsed;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 185;
+            animation1.To = 920;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
             {
-                await Task.Delay(1000);
-                Dispatcher.Invoke(() => PathAnimationTop(185, 920));
-                await Task.Delay(4000);
-                Dispatcher.Invoke(() => PathAnimationLeft(150, 960));
-                await Task.Delay(4000);
-                Dispatcher.Invoke(() => PathAnimationLeft(960, 1760));
-                await Task.Delay(4000);
-                Dispatcher.Invoke(() => PathAnimationTop(900, 185));
-                await Task.Delay(4000);
+                if (Canvas.GetTop(animatedObject) == 920)
+                {
+                    dotTimer.Stop();
+                    DisplayCurrentQuestionOnTvScreen();
+                    True1.IsEnabled = true;
+                    False1.IsEnabled = true;
+                    isAnimationInProgress = false;
+                }
+            };
 
-            }
+            storyboard.Begin();
+        }
+        private void False1_Click(object sender, RoutedEventArgs e)
+        {
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True1.Visibility = Visibility.Collapsed;
+            False1.Visibility = Visibility.Collapsed;
+            True2.Visibility = Visibility.Visible;
+            False2.Visibility = Visibility.Visible;
+            True1.IsEnabled = false;
+            False1.IsEnabled = false;
+            True2.IsEnabled = false;
+            False2.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 150;
+            animation1.To = 960;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 960)
+                {
+                    dotTimer.Stop();
+                    DisplayCurrentQuestionOnTvScreen();
+                    True2.IsEnabled = true;
+                    False2.IsEnabled = true;
+                    isAnimationInProgress = false;
+                }
+            };
+
+            storyboard.Begin();
         }
 
-        private void InitializeTvScreen()
+        private void True1_Click(object sender, RoutedEventArgs e)
         {
+
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True1.Visibility = Visibility.Collapsed;
+            False1.Visibility = Visibility.Collapsed;
+            True2.Visibility = Visibility.Visible;
+            False2.Visibility = Visibility.Visible;
+            True1.IsEnabled = false;
+            False1.IsEnabled = false;
+            True2.IsEnabled = false;
+            False2.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 150;
+            animation1.To = 960;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 960)
+                {
+                    dotTimer.Stop();
+                    DisplayCurrentQuestionOnTvScreen();
+                    True2.IsEnabled = true;
+                    False2.IsEnabled = true;
+                    isAnimationInProgress = false;
+                }
+            };
+
+            storyboard.Begin();
+        }
+        // This is very lazy I know. And I hate myself for it
+        private void False2_Click(object sender, RoutedEventArgs e)
+        {
+
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True2.Visibility = Visibility.Collapsed;
+            False2.Visibility = Visibility.Collapsed;
+            True3.Visibility = Visibility.Visible;
+            False3.Visibility = Visibility.Visible;
+            True2.IsEnabled = false;
+            False2.IsEnabled = false;
+            True3.IsEnabled = false;
+            False3.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 960;
+            animation1.To = 1760;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1760)
+                {
+                    dotTimer.Stop();
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True3.IsEnabled = true;
+                    False3.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True2_Click(object sender, RoutedEventArgs e)
+        {
+
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True2.Visibility = Visibility.Collapsed;
+            False2.Visibility = Visibility.Collapsed;
+            True3.Visibility = Visibility.Visible;
+            False3.Visibility = Visibility.Visible;
+            True2.IsEnabled = false;
+            False2.IsEnabled = false;
+            True3.IsEnabled = false;
+            False3.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 960;
+            animation1.To = 1760;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1760)
+                {
+                    dotTimer.Stop();
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True3.IsEnabled = true;
+                    False3.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+
+        private void False3_Click(object sender, RoutedEventArgs e)
+        {
+
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 900;
+            animation1.To = 185;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 185)
+                {
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+
+                    // No more questions, display the final score or handle game completion logic
+                    tvScreen.Text = $"Game Over! Your Score: {userScore}";
+                    True1.Visibility = Visibility.Collapsed;
+                    False1.Visibility = Visibility.Collapsed;
+                    True2.Visibility = Visibility.Collapsed;
+                    False2.Visibility = Visibility.Collapsed;
+                    True3.Visibility = Visibility.Collapsed;
+                    False3.Visibility = Visibility.Collapsed;
+                    // Optionally, you can reset the game or close the application
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True3_Click(object sender, RoutedEventArgs e)
+        {
+
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 900;
+            animation1.To = 185;
+            animation1.Duration = TimeSpan.FromSeconds(3);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 185)
+                {
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+
+                    // No more questions, display the final score or handle game completion logic
+                    tvScreen.Text = $"Game Over! Your Score: {userScore}";
+                    True1.Visibility = Visibility.Collapsed;
+                    False1.Visibility = Visibility.Collapsed;
+                    True2.Visibility = Visibility.Collapsed;
+                    False2.Visibility = Visibility.Collapsed;
+                    True3.Visibility = Visibility.Collapsed;
+                    False3.Visibility = Visibility.Collapsed;
+                    // Optionally, you can reset the game or close the application
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        // Dot Animation // 
+        private void DotAnimationTimer()
+        {
+            dotCount = 0;
+            dotTimer = new DispatcherTimer();
+            dotTimer.Interval = TimeSpan.FromSeconds(0.2); // Change interval as needed
+            dotTimer.Tick += DotAnimation;
+            dotTimer.Start();
+        }
+        private void DotAnimation(object sender, EventArgs e)
+        {
+            // Increment dot count and update text
+            dotCount = (dotCount + 1) % 4;
+            string dots = new string('.', dotCount + 1);
+            tvScreen.Text = dots;
+        }
+
+        // Tv Screen Animation // 
+        private void DisplayCurrentQuestionOnTvScreen()
+        {
+            processingEvent = true;
             tvScreen.Text = "";
-            spaceBar.Text = "";
-            // Attach key down event to the window
-            Loaded += (s, e) => Focus();
-            KeyDown += MainWindow_KeyDown;
-
-
-            // Set focus to the Canvas
-            Loaded += (s, e) => myGrid.Focus();
-            //// Subscribe to the Loaded event to start the animation when the page is loaded.
-            //Loaded += OnPageLoaded;
 
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(10); // Adjust interval as needed
-            timer.Tick += Timer_Tick;
+            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Tick += TextAnimationTimer_Tick;
 
-            // Initial text
-            UpdateTvScreenText();
-        }
-        private void PathAnimationLeft(double startX, double endpointX)
-        {
-            DoubleAnimation animation = new DoubleAnimation();
-            animation.From = startX;
-            animation.To = endpointX;
-            animation.Duration = TimeSpan.FromSeconds(3);
-
-            Storyboard storyboard = new Storyboard();
-            storyboard.Children.Add(animation);
-
-            Storyboard.SetTarget(animation, animatedObject);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Canvas.LeftProperty));
-
-            animation.Completed += (sender, e) =>
+            if (questionList[currentQuestionIndex].QuestionText.Length > 0)
             {
-                if (Canvas.GetLeft(animatedObject) == endpointX)
-                {
-                    Debug.WriteLine("AHUAHUA left");
-                    
-                }
-            };
-
-            storyboard.Begin();
-
-        }
-
-        private void PathAnimationTop(double startY, double endpointY)
-        {
-            DoubleAnimation animation = new DoubleAnimation();
-            animation.From = startY;
-            animation.To = endpointY;
-            animation.Duration = TimeSpan.FromSeconds(3);
-
-            Storyboard storyboard = new Storyboard();
-            storyboard.Children.Add(animation);
-
-            Storyboard.SetTarget(animation, animatedObject);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Canvas.TopProperty));
-
-            animation.Completed += (sender, e) =>
-            {
-                if (Canvas.GetTop(animatedObject) == endpointY)
-                {
-
-                    Debug.WriteLine("AHUAHUA top");
-
-                    //if (animationCounter > 2)
-                    //{
-                    //    // Reset the position of animatedObject
-                    //    Canvas.SetLeft(animatedObject, 140);
-                    //    Canvas.SetTop(animatedObject, 175);
-                    //}
-
-                }
-            };
-
-            storyboard.Begin();
-        }
-
-
-
-
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            Debug.WriteLine(currentIndex + 1);
-            // Check if the pressed key is the spacebar
-            if (e.Key == Key.Space && !printingInProgress)
-            {
-                spaceBar.Text = "";
-                tvScreen.Text = ""; // Clears the txtbox before running again
-                Debug.WriteLine("Spacebar is pressed");
-
-                // Set the state to indicate that printing is in progress
-                printingInProgress = true;
-
-                // Stop the timer and reset charIndex when spacebar is pressed
-                timer.Stop();
-
-                charIndex = 0;
-                currentIndex = (currentIndex + 1) % textList.Count;
-                // Change text on spacebar press
-                UpdateTvScreenText();
-
-            }
-
-            if (currentIndex == 14)
-            {
-                Finish.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void UpdateTvScreenText()
-        {
-            // Start the timer to print text character by character
-            timer.Start();
-        }
-
-        private int stringArrCount = 0;
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // Print characters one by one
-            if (charIndex < textList[currentIndex].Length)
-            {
-                tvScreen.Text += textList[currentIndex][charIndex];
-                charIndex++;
+                currentCharIndex = 0;
+                timer.Start();
             }
             else
             {
-                // Stop the timer when the entire string is printed
-                timer.Stop();
-
-                // Set the state to indicate that printing is complete
+                processingEvent = false;
                 printingInProgress = false;
-
-                spaceBar.Text = "Press spacebar to continue";
-                //stringArrCount++;
-                //Debug.WriteLine(stringArrCount);
             }
         }
+
+        private void TextAnimationTimer_Tick(object sender, EventArgs e)
+        {
+            // Update the tvScreen with one more character
+            if (currentCharIndex < questionList[currentQuestionIndex].QuestionText.Length)
+            {
+                tvScreen.Text = questionList[currentQuestionIndex].QuestionText.Substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+            else
+            {
+                // Stop the timer when the whole text is displayed
+                timer.Stop();
+                processingEvent = false;
+                printingInProgress = false;
+
+            }
+        }
+
+        private void MoveToNextQuestion()
+        {
+            if (currentQuestionIndex < questionList.Count - 1)
+            {
+                Debug.WriteLine(currentQuestionIndex + "wtf");
+                currentQuestionIndex++;
+            }
+        }
+
+
+        private void UpdateUserScoreText()
+        {
+            if (userScore == 4)
+            {
+                userScore = userScore - 1; // lazy debugging
+            }
+            userScoreText.Text = $"Score: {userScore}";
+        }
+
     }
 }

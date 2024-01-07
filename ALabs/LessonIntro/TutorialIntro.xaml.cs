@@ -82,9 +82,7 @@ namespace ALabs.LessonIntro
         private int charIndex = 0;
         private DispatcherTimer timer;
         private bool printingInProgress = false;
-        private int animationCounter = 0;
-        private bool StartToOneFinished, OneToTwoFinished, TwoToThreeFinished, ThreeToEndFinished = false;
-
+       
         public TutorialIntro(MainWindow mainWindow)
         {
             InitializeComponent();

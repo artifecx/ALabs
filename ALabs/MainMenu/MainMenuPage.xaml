@@ -17,7 +17,7 @@
             <!-- Distance between upper and lower content -->
             <RowDefinition Height="40"/>
             <!-- Lower content -->
-            <RowDefinition Height="550"/>
+            <RowDefinition Height="750"/>
             <!-- Distance lower content and bottom -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>

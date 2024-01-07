@@ -9,16 +9,28 @@
       Title="Challenge1Intro">
 
     <Grid Focusable="True" x:Name="myGrid">
-        <Button Content="Back" Width="100" Height="50" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="Finish" Content="Finish Tutorial" Width="100" Height="50" Click="FinishTutorial_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="400" Visibility="Hidden"/>
+
+        <TextBlock x:Name="userScoreText" FontSize="30" Text="Score: 0" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="400" >
+            <Button x:Name="True1" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True1_Click"/>
+            <Button x:Name="False1" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False1_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="400" >
+            <Button x:Name="True2" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True2_Click"/>
+            <Button x:Name="False2" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False2_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="400" >
+            <Button x:Name="True3" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True3_Click"/>
+            <Button x:Name="False3" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False3_Click"/>
+        </StackPanel>
         <!-- Outer frame of the TV -->
         <Border BorderBrush="Black" BorderThickness="5" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="290" Width="490" Margin="721,228,0,0">
             <!-- Inner screen of the TV -->
             <Border Background="Black" Margin="10">
                 <!-- Content of the TV screen goes here -->
                 <StackPanel>
-                    <TextBlock x:Name="tvScreen" Text="Your TV Content" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="Wrap" Height="80" Margin="0, 70,0,70"/>
-                    <TextBlock x:Name="spaceBar" Text="Space" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="tvScreen" Foreground="White" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Height="130" Margin="0, 70,0,70" Width="386"/>
                 </StackPanel>
             </Border>
         </Border>
@@ -36,11 +48,6 @@
 
             <!-- Object to be animated -->
             <Ellipse x:Name="animatedObject" Width="20" Height="20" Fill="Blue" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="140" Canvas.Top="175" />
-            <!--<Ellipse x:Name="animatedObject_Copy" Width="20" Height="20" Fill="Blue" Canvas.Left="180" Canvas.Top="1000" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-    <Ellipse x:Name="animatedObject_Copy1" Width="20" Height="20" Fill="Blue" Canvas.Left="990" Canvas.Top="1000" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-    <Ellipse x:Name="animatedObject_Copy2" Width="20" Height="20" Fill="Blue" Canvas.Left="1760" Canvas.Top="960" HorizontalAlignment="Left" VerticalAlignment="Top"/> -->
-
-
 
             <!--Start and End States-->
             <Ellipse x:Name="startState" Width="100" Height="100" Fill="Green" Canvas.Left="100" Canvas.Top="135"/>
