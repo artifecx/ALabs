@@ -42,7 +42,14 @@
                 <Button Content="6. NFA Construction from a Regular Expression" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn6Click" Name="btn6" IsEnabled="False"/>
                 <Button Content="7. Practice" HorizontalContentAlignment="Left" Padding="20,0,0,0" Height="50" Click="btn7Click" Name="btn7" IsEnabled="False"/>
             </StackPanel>
-            <TextBox Margin="350,40,0,0" TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="30" TextWrapping="Wrap" Width="1400" Height="750" Name="tbL" IsEnabled="False" Grid.RowSpan="4" Grid.Row="1" />
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="350,40,0,0" Width="1400" Height="750" Name="panel" Grid.RowSpan="4" Grid.Row="1">
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <StackPanel Name="panelContent">
+                        
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
         </Grid>
         
         <Grid Grid.Row="3">
