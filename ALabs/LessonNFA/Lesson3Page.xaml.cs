@@ -1,4 +1,5 @@
 ﻿using ALabs.LessonRegEx;
+using ALabs.LessonNFA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,8 @@ namespace ALabs.LessonNFA
 
         private void btn1Click(object sender, RoutedEventArgs e)
         {
-            
+            panelContent.Children.Clear();
+            LessonContent.DisplayContent1(panelContent);
         }
         private void btn2Click(object sender, RoutedEventArgs e)
         {
