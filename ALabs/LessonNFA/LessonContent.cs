@@ -18,8 +18,9 @@ namespace ALabs.LessonNFA
     {
         private static readonly ResourceManager ResourceManager = new ResourceManager("ALabs.LessonNFA.ContentResources", typeof(LessonContent).Assembly);
         private static bool chapter1 = false;
+        private static bool chapter2 = false;
 
-        public static void DisplayContent1(StackPanel panel, Button button)
+        public static void DisplayChapter1(StackPanel panel, Button button)
         {
             if (chapter1 == true)
             {
@@ -187,6 +188,11 @@ namespace ALabs.LessonNFA
 
                 panel.Children.Add(border);
             }
+        }
+
+        public static void DisplayChapter2(StackPanel panel, Button button)
+        {
+
         }
     }
 }

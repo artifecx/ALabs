@@ -143,6 +143,6 @@
     <value>Before proceeding to the next chapter, you must answer a question...</value>
   </data>
   <data name="C1Q1" xml:space="preserve">
-    <value>True or False: Based on your observation from the previous comparisons between an NFA and a DFA, do you need to have a dead state when constructing an NFA?</value>
+    <value>True or False: Based on your observation from the previous comparisons between an NFA and a DFA, you don't need to have a dead state when constructing an NFA.</value>
   </data>
 </root>

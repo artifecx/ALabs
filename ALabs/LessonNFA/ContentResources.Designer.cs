@@ -135,7 +135,7 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to True or False: Based on your observation from the previous comparisons between an NFA and a DFA, do you need to have a dead state when constructing an NFA?.
+        ///   Looks up a localized string similar to True or False: Based on your observation from the previous comparisons between an NFA and a DFA, you don&apos;t need to have a dead state when constructing an NFA..
         /// </summary>
         internal static string C1Q1 {
             get {
