@@ -61,6 +61,24 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are correct! An NFA&apos;s non-deterministic nature means you do not need to define a dead state..
+        /// </summary>
+        internal static string C1A1 {
+            get {
+                return ResourceManager.GetString("C1A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. Unlike in a DFA, where it is crucial to have transitions defined for every state and input symbol to ensure determinism, NFAs do not have this restriction, hence the name non-deterministic..
+        /// </summary>
+        internal static string C1A2 {
+            get {
+                return ResourceManager.GetString("C1A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] C1E1 {
@@ -104,6 +122,24 @@ namespace ALabs.LessonNFA {
         internal static string C1P3 {
             get {
                 return ResourceManager.GetString("C1P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Before proceeding to the next chapter, you must answer a question....
+        /// </summary>
+        internal static string C1P4 {
+            get {
+                return ResourceManager.GetString("C1P4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True or False: Based on your observation from the previous comparisons between an NFA and a DFA, do you need to have a dead state when constructing an NFA?.
+        /// </summary>
+        internal static string C1Q1 {
+            get {
+                return ResourceManager.GetString("C1Q1", resourceCulture);
             }
         }
     }
