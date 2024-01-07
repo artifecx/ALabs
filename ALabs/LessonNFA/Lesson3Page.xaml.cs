@@ -23,10 +23,15 @@ namespace ALabs.LessonNFA
     public partial class Lesson3Page : Page
     {
         private readonly MainWindow mainWindow;
+
         public Lesson3Page(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            btnPrev.IsEnabled = false;
+            panelContent.Children.Clear();
+            LessonContent.DisplayContent1(panelContent, btn2);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -36,8 +41,10 @@ namespace ALabs.LessonNFA
 
         private void btn1Click(object sender, RoutedEventArgs e)
         {
+            btnPrev.IsEnabled = false;
+
             panelContent.Children.Clear();
-            LessonContent.DisplayContent1(panelContent);
+            LessonContent.DisplayContent1(panelContent, btn2);
         }
         private void btn2Click(object sender, RoutedEventArgs e)
         {
