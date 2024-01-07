@@ -68,7 +68,7 @@ namespace ALabs.LessonIntro
                 "Starting Point: Input is what kick-starts the functioning of a system.\r\n\r\n\r\n" 
                 +
                 "Finite Automatons:\r\n\r\n" +
-                "A Finite Automaton is a mathematical model depicting a system with a limited set of states, transitions between these states, and inputs that prompt these transitions." +
+                "A Finite Automaton is a mathematical model depicting a system with a limited set of states, transitions between these states, and inputs that prompt these transitions.\r\n" +
                 "Limited Machines: Finite automatons are like machines with a limited set of possible states and transitions.\r\n" +
                 "Restricted Systems: They represent systems with a finite number of possible conditions and movements.\r\n" +
                 "Simple Models: Think of finite automatons as simple models of computation with a fixed number of states and transitions.";
