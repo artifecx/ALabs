@@ -10,11 +10,13 @@
       Title="Lesson1Page">
 
     <Grid>
-        <Button Content="Tutorial"                    Click ="btn1Click" Width="300" Height="50" Margin="-1100,-600,0,0" Name="btn1" IsEnabled="True" MouseEnter="btn1_MouseEnter" MouseLeave="btn1_MouseLeave"/>
-        <Button Content="Challenge 1"                 Click ="btn3Click" Width="300" Height="50" Margin="-1100,-400,0,0" Name="btn3" IsEnabled="True" MouseEnter="btn3_MouseEnter" MouseLeave="btn3_MouseLeave"/>
-        <Button Content="Challenge 2"                 Click ="btn4Click" Width="300" Height="50" Margin="-1100,-200,0,0"    Name="btn4" IsEnabled="True" MouseEnter="btn4_MouseEnter" MouseLeave="btn4_MouseLeave"/>
-        <Button Content="Challenge 3"                 Click ="btn5Click" Width="300" Height="50" Margin="-1100,0,0,0"  Name="btn5" IsEnabled="True" MouseEnter="btn5_MouseEnter" MouseLeave="btn5_MouseLeave"/>
-        <Button Content="Automata Theory Information" Click ="btn2Click" Width="300" Height="50" Margin="-1100,200,0,0" Name="btn2" IsEnabled="True"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="265,178,0,0">
+            <Button Content="States"                       Click ="States_Click"           Width="300" Height="50" Name="States"           IsEnabled="True" MouseEnter="States_MouseEnter"           MouseLeave="States_MouseLeave"           Margin="30"/>
+            <Button Content="Transitions"                  Click ="Transitions_Click"      Width="300" Height="50" Name="Transitions"      IsEnabled="True" MouseEnter="Transitions_MouseEnter"      MouseLeave="Transitions_MouseLeave"      Margin="30"/>
+            <Button Content="Inputs"                       Click ="Inputs_Click"           Width="300" Height="50" Name="Inputs"           IsEnabled="True" MouseEnter="Inputs_MouseEnter"           MouseLeave="Inputs_MouseLeave"           Margin="30"/>
+            <Button Content="Introduction Quiz"            Click ="IntroductionQuiz_Click" Width="300" Height="50" Name="IntroductionQuiz" IsEnabled="True" MouseEnter="IntroductionQuiz_MouseEnter" MouseLeave="IntroductionQuiz_MouseLeave" Margin="30"/>
+            <Button Content="Automata Theory Information"  Click ="ATInfo_Click"           Width="300" Height="50" Name="ATInfo"           IsEnabled="True" Margin="30"/>
+        </StackPanel>
         <TextBox  Padding="30" TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="20" Margin="350,-150,20,20" TextWrapping="Wrap"  Width="1000" Height="500" Name="tbL" IsReadOnly="True" VerticalAlignment="Center" VerticalScrollBarVisibility="Auto" />
         <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="10,600,0,0"/>
     </Grid>
