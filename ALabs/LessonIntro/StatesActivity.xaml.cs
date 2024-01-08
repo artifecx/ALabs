@@ -19,9 +19,9 @@ using System.Windows.Threading;
 namespace ALabs.LessonIntro
 {
     /// <summary>
-    /// Interaction logic for Challenge1Intro.xaml
+    /// Interaction logic for StatesActivity.xaml
     /// </summary>
-    public partial class Challenge1Intro : Page
+    public partial class StatesActivity : Page
     {
         private readonly MainWindow mainWindow;
 
@@ -31,11 +31,11 @@ namespace ALabs.LessonIntro
         private List<Question> questionList = new List<Question>
         {   
             // 0
-            new Question("Automata theory is a branch of computer science that involves understanding and designing systems that follow specific patterns or rules.", true),
+            new Question("States in Automata Theory represent different situations or conditions that a system can be in at any given moment.", true),
             // 1
-            new Question(" In automata theory, a \"state\" represents a specific position that a system occupies at any given time.", true),
+            new Question(" In automata theory, States alone do not capture the behavior of a system; rather, they work in conjunction with transitions to represent the system's dynamics and response to input.", false),
             // 2
-            new Question("Transitions in automata theory describe the changes in the state of a system and are influenced by events, inputs, or conditions.", true),
+            new Question("States play a crucial role in defining the overall structure of automata and are essential for understanding how a system progresses from one state to another in response to input.", true),
             new Question("...",false), // lazy debugging again 
           
         };
@@ -55,8 +55,9 @@ namespace ALabs.LessonIntro
         private bool isAnimationInProgress = false;
         private bool EndStateReached = false;
 
+        // User Score
         private int userScore = 0;
-        public Challenge1Intro(MainWindow mainWindow)
+        public StatesActivity(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
@@ -66,10 +67,12 @@ namespace ALabs.LessonIntro
             False2.Click += False2_Click;
             True3.Click += True3_Click;
             False3.Click += False3_Click;
+            BackToDashboard.Click += BackToDashboard_Click;
+            GoToNextLesson.Click += GoToNextLesson_Click;
+
 
             InitializeAnimation();
         }
-
         private void InitializeAnimation()
         {
             DotAnimationTimer();
@@ -85,10 +88,14 @@ namespace ALabs.LessonIntro
             False2.IsEnabled = false;
             True3.IsEnabled = false;
             False3.IsEnabled = false;
+
             True2.Visibility = Visibility.Collapsed;
             False2.Visibility = Visibility.Collapsed;
             True3.Visibility = Visibility.Collapsed;
             False3.Visibility = Visibility.Collapsed;
+            BackToDashboard.Visibility = Visibility.Collapsed;
+            GoToNextLesson.Visibility = Visibility.Collapsed;
+
 
             DoubleAnimation animation1 = new DoubleAnimation();
             animation1.From = 185;
@@ -118,6 +125,9 @@ namespace ALabs.LessonIntro
         }
         private void False1_Click(object sender, RoutedEventArgs e)
         {
+            
+            UpdateUserScoreText();
+            dotTimer.Start();
             if (isAnimationInProgress)
                 return;
 
@@ -162,7 +172,8 @@ namespace ALabs.LessonIntro
 
         private void True1_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            
             dotTimer.Start();
 
             if (isAnimationInProgress)
@@ -196,6 +207,8 @@ namespace ALabs.LessonIntro
             {
                 if (Canvas.GetLeft(animatedObject) == 960)
                 {
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
                     dotTimer.Stop();
                     DisplayCurrentQuestionOnTvScreen();
                     True2.IsEnabled = true;
@@ -209,7 +222,6 @@ namespace ALabs.LessonIntro
         // This is very lazy I know. And I hate myself for it
         private void False2_Click(object sender, RoutedEventArgs e)
         {
-
             dotTimer.Start();
 
             if (isAnimationInProgress)
@@ -243,6 +255,8 @@ namespace ALabs.LessonIntro
             {
                 if (Canvas.GetLeft(animatedObject) == 1760)
                 {
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
                     dotTimer.Stop();
                     isAnimationInProgress = false;
                     DisplayCurrentQuestionOnTvScreen();
@@ -256,7 +270,6 @@ namespace ALabs.LessonIntro
 
         private void True2_Click(object sender, RoutedEventArgs e)
         {
-
             dotTimer.Start();
 
             if (isAnimationInProgress)
@@ -290,6 +303,7 @@ namespace ALabs.LessonIntro
             {
                 if (Canvas.GetLeft(animatedObject) == 1760)
                 {
+
                     dotTimer.Stop();
                     isAnimationInProgress = false;
                     DisplayCurrentQuestionOnTvScreen();
@@ -304,7 +318,6 @@ namespace ALabs.LessonIntro
 
         private void False3_Click(object sender, RoutedEventArgs e)
         {
-
             dotTimer.Start();
 
             if (isAnimationInProgress)
@@ -330,20 +343,29 @@ namespace ALabs.LessonIntro
             {
                 if (Canvas.GetTop(animatedObject) == 185)
                 {
+                    
                     dotTimer.Stop();
                     EndStateReached = true;
                     isAnimationInProgress = false;
 
-                    // No more questions, display the final score or handle game completion logic
-                    tvScreen.Text = $"Game Over! Your Score: {userScore}";
+                    if (userScore == 1)
+                    {
+                        tvScreen.Text = $"Better luck next time!\n Your Score: {userScore}";
+                    }
+                    else if (userScore == 2)
+                    {
+                        tvScreen.Text = $"You're almost there!\n Your Score: {userScore}";
+                    }
+                    else if (userScore == 3)
+                    {
+                        tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
+                    }
                     True1.Visibility = Visibility.Collapsed;
                     False1.Visibility = Visibility.Collapsed;
                     True2.Visibility = Visibility.Collapsed;
                     False2.Visibility = Visibility.Collapsed;
                     True3.Visibility = Visibility.Collapsed;
                     False3.Visibility = Visibility.Collapsed;
-                    // Optionally, you can reset the game or close the application
-
                 }
             };
 
@@ -352,7 +374,6 @@ namespace ALabs.LessonIntro
 
         private void True3_Click(object sender, RoutedEventArgs e)
         {
-
             dotTimer.Start();
 
             if (isAnimationInProgress)
@@ -379,20 +400,33 @@ namespace ALabs.LessonIntro
             {
                 if (Canvas.GetTop(animatedObject) == 185)
                 {
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
                     dotTimer.Stop();
                     EndStateReached = true;
                     Debug.WriteLine("Endstate reached!");
                     isAnimationInProgress = false;
 
                     // No more questions, display the final score or handle game completion logic
-                    tvScreen.Text = $"Game Over! Your Score: {userScore}";
+                    if(userScore == 1)
+                    {
+                        tvScreen.Text = $"Better luck next time!\n Your Score: {userScore}";
+                    } else if (userScore == 2)
+                    {
+                        tvScreen.Text = $"You're almost there!\n Your Score: {userScore}";
+                    } else if(userScore == 3)
+                    {
+                        tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
+                    }
+                    BackToDashboard.Visibility = Visibility.Visible;
+                    GoToNextLesson.Visibility = Visibility.Visible;
+
                     True1.Visibility = Visibility.Collapsed;
                     False1.Visibility = Visibility.Collapsed;
                     True2.Visibility = Visibility.Collapsed;
                     False2.Visibility = Visibility.Collapsed;
                     True3.Visibility = Visibility.Collapsed;
                     False3.Visibility = Visibility.Collapsed;
-                    // Optionally, you can reset the game or close the application
 
                 }
             };
@@ -405,7 +439,7 @@ namespace ALabs.LessonIntro
         {
             dotCount = 0;
             dotTimer = new DispatcherTimer();
-            dotTimer.Interval = TimeSpan.FromSeconds(0.2); // Change interval as needed
+            dotTimer.Interval = TimeSpan.FromSeconds(0.2);
             dotTimer.Tick += DotAnimation;
             dotTimer.Start();
         }
@@ -465,16 +499,19 @@ namespace ALabs.LessonIntro
                 currentQuestionIndex++;
             }
         }
-
-
         private void UpdateUserScoreText()
         {
-            if (userScore == 4)
-            {
-                userScore = userScore - 1; // lazy debugging
-            }
             userScoreText.Text = $"Score: {userScore}";
         }
 
+        private void BackToDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.mainFrame.Navigate("");
+        }
+
+        private void GoToNextLesson_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.mainFrame.Navigate("");
+        }
     }
 }
