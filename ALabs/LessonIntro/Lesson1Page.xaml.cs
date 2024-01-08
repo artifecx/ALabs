@@ -36,13 +36,27 @@ namespace ALabs.LessonIntro
             mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow));
         }
 
-        private void btn1Click(object sender, RoutedEventArgs e)
+        private void States_Click(object sender, RoutedEventArgs e)
         {
-            
-            mainWindow.mainFrame.Navigate(new TutorialIntro(mainWindow));
-
+            mainWindow.mainFrame.Navigate(new States(mainWindow));
         }
-        private void btn2Click(object sender, RoutedEventArgs e)
+
+        private void Transitions_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.mainFrame.Navigate(new Transitions(mainWindow));
+        }
+
+        private void Inputs_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.mainFrame.Navigate(new Input(mainWindow));
+        }
+
+        private void IntroductionQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.mainFrame.Navigate("");
+        }
+
+        private void ATInfo_Click(object sender, RoutedEventArgs e)
         {
             String text = "Automata Theory:\r\n\r\n" +
                 "Complex Machines: Automata theory is like studying complex machines that follow specific rules or patterns.\r\n" +
@@ -65,7 +79,7 @@ namespace ALabs.LessonIntro
                 "In Automata Theory, an \"input\" refers to the symbols or signals that a system processes, triggering transitions between different states. \r\n" +
                 "Data In: Input is the information or data provided to a system.\r\n" +
                 "Instructions: It's like the set of instructions given to a machine or process.\r\n" +
-                "Starting Point: Input is what kick-starts the functioning of a system.\r\n\r\n\r\n" 
+                "Starting Point: Input is what kick-starts the functioning of a system.\r\n\r\n\r\n"
                 +
                 "Finite Automatons:\r\n\r\n" +
                 "A Finite Automaton is a mathematical model depicting a system with a limited set of states, transitions between these states, and inputs that prompt these transitions.\r\n" +
@@ -73,59 +87,46 @@ namespace ALabs.LessonIntro
                 "Restricted Systems: They represent systems with a finite number of possible conditions and movements.\r\n" +
                 "Simple Models: Think of finite automatons as simple models of computation with a fixed number of states and transitions.";
 
-            tbL.Text = text; 
-            btn3.IsEnabled = true;
-        }
-        private void btn3Click(object sender, RoutedEventArgs e)
-        {
-            mainWindow.mainFrame.Navigate(new Challenge1Intro(mainWindow));
-            btn4.IsEnabled = true;
-        }
-        private void btn4Click(object sender, RoutedEventArgs e)
-        {
-            
-            btn5.IsEnabled = true;
+            tbL.Text = text;
+            // btn3.IsEnabled = true;
         }
 
-        private void btn5Click(object sender, RoutedEventArgs e)
+        private void States_MouseEnter(object sender, MouseEventArgs e)
         {
-            btn5.IsEnabled = true;
+            tbL.Text = "This is the text for Tutorial when hovering over States.";
         }
 
-        private void btn1_MouseEnter(object sender, MouseEventArgs e)
+        private void Transitions_MouseEnter(object sender, MouseEventArgs e)
         {
-            tbL.Text = "This is the text for Tutorial when hovering over btn1.";
-        }
-        private void btn3_MouseEnter(object sender, MouseEventArgs e)
-        {
-            tbL.Text = "This is the text for Tutorial when hovering over btn3.";
+            tbL.Text = "This is the text for Tutorial when hovering over Transitions.";
         }
 
-        private void btn4_MouseEnter(object sender, MouseEventArgs e)
+        private void Inputs_MouseEnter(object sender, MouseEventArgs e)
         {
-            tbL.Text = "This is the text for Tutorial when hovering over btn4.";
+            tbL.Text = "This is the text for Tutorial when hovering over Inputs.";
         }
 
-        private void btn5_MouseEnter(object sender, MouseEventArgs e)
+        private void IntroductionQuiz_MouseEnter(object sender, MouseEventArgs e)
         {
-            tbL.Text = "This is the text for Tutorial when hovering over btn5.";
+            tbL.Text = "This is the text for Tutorial when hovering over IntroductionQuiz.";
         }
-        private void btn1_MouseLeave(object sender, MouseEventArgs e)
+
+        private void States_MouseLeave(object sender, MouseEventArgs e)
         {
             tbL.Clear();
         }
 
-        private void btn3_MouseLeave(object sender, MouseEventArgs e)
+        private void Transitions_MouseLeave(object sender, MouseEventArgs e)
         {
             tbL.Clear();
         }
 
-        private void btn4_MouseLeave(object sender, MouseEventArgs e)
+        private void Inputs_MouseLeave(object sender, MouseEventArgs e)
         {
             tbL.Clear();
         }
 
-        private void btn5_MouseLeave(object sender, MouseEventArgs e)
+        private void IntroductionQuiz_MouseLeave(object sender, MouseEventArgs e)
         {
             tbL.Clear();
         }

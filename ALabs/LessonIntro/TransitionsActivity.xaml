@@ -1,0 +1,66 @@
+﻿<Page x:Class="ALabs.LessonIntro.TransitionsActivity"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ALabs.LessonIntro"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="TransitionsActivity">
+
+    <Grid Focusable="True" x:Name="myGrid">
+
+        <TextBlock x:Name="userScoreText" FontSize="30" Text="Score: 0" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,57,0,0"/>
+        <TextBlock x:Name="TrueOrFalse" Text="True or False!" FontSize="30" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,160,0,0"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True1" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True1_Click"/>
+            <Button x:Name="False1" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False1_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True2" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True2_Click"/>
+            <Button x:Name="False2" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False2_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True3" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True3_Click"/>
+            <Button x:Name="False3" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False3_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="BackToDashboard" Content="Back to Dashboard" Width="130" Height="50" Margin="10" Focusable="False" Click="BackToDashboard_Click" Visibility="Collapsed"/>
+            <Button x:Name="GoToNextLesson" Content="Next Lesson" Width="130" Height="50" Margin="10" Focusable="False" Click="GoToNextLesson_Click" Visibility="Collapsed"/>
+        </StackPanel>
+        <!-- Outer frame of the TV -->
+
+        <Canvas>
+            <Border BorderBrush="Black" BorderThickness="5" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="290" Width="490" Canvas.Left="715" Canvas.Top="320">
+                <!-- Inner screen of the TV -->
+                <Border Background="Black" Margin="10">
+                    <!-- Content of the TV screen goes here -->
+                    <StackPanel>
+                        <TextBlock x:Name="tvScreen" Foreground="White" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Height="130" Margin="0, 70,0,70" Width="386"/>
+                    </StackPanel>
+                </Border>
+            </Border>
+            <!--Lines connecting each states-->
+            <!--Lines connecting each state-->
+            <Line x:Name="StartToOne" X1="150" Y1="185" X2="150" Y2="930" Stroke="Black" StrokeThickness="2"/>
+            <Line x:Name="OneToTwo" X1="150" Y1="930" X2="960" Y2="930" Stroke="Black" StrokeThickness="2"/>
+            <Line x:Name="TwoToThree" X1="960" Y1="930" X2="1770" Y2="930" Stroke="Black" StrokeThickness="2"/>
+            <Line x:Name="ThreeToEnd" X1="1770" Y1="185" X2="1770" Y2="930" Stroke="Black" StrokeThickness="2"/>
+
+
+
+            <!-- Object to be animated -->
+            <Ellipse x:Name="animatedObject" Width="20" Height="20" Fill="Blue" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="140" Canvas.Top="175" />
+
+            <!--Start and End States-->
+            <Ellipse x:Name="startState" Width="100" Height="100" Fill="Green" Canvas.Left="100" Canvas.Top="135"/>
+            <Ellipse x:Name="endState" Width="100" Height="100" Fill="Red" Canvas.Left="1720" Canvas.Top="145" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <!--Finite States-->
+            <Ellipse x:Name="finiteState1" Width="100" Height="100" Fill="Black" Canvas.Left="100" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState2" Width="100" Height="100" Fill="Black" Canvas.Left="1720" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState3" Width="100" Height="100" Fill="Black" Canvas.Left="910" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </Canvas>
+    </Grid>
+</Page>
