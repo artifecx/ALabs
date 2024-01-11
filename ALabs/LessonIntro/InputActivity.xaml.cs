@@ -68,7 +68,7 @@ namespace ALabs.LessonIntro
             True3.Click += True3_Click;
             False3.Click += False3_Click;
             BackToDashboard.Click += BackToDashboard_Click;
-            GoToNextLesson.Click += GoToNextLesson_Click;
+            //GoToNextLesson.Click += GoToNextLesson_Click;
 
             InitializeAnimation();
         }
@@ -94,7 +94,7 @@ namespace ALabs.LessonIntro
             True3.Visibility = Visibility.Collapsed;
             False3.Visibility = Visibility.Collapsed;
             BackToDashboard.Visibility = Visibility.Collapsed;
-            GoToNextLesson.Visibility = Visibility.Collapsed;
+            //GoToNextLesson.Visibility = Visibility.Collapsed;
 
 
             DoubleAnimation animation1 = new DoubleAnimation();
@@ -422,7 +422,7 @@ namespace ALabs.LessonIntro
                         tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
                     }
                     BackToDashboard.Visibility = Visibility.Visible;
-                    GoToNextLesson.Visibility = Visibility.Visible;
+                    //GoToNextLesson.Visibility = Visibility.Visible;
 
                     True1.Visibility = Visibility.Collapsed;
                     False1.Visibility = Visibility.Collapsed;

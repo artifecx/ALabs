@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections;
 
 namespace ALabs.LessonNFA
 {
@@ -24,13 +25,24 @@ namespace ALabs.LessonNFA
     {
         private readonly MainWindow mainWindow;
         private int location;
+        private bool skipReveal = false;
 
         public Lesson3Page(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
 
-            InitializePanel(0);
+            InitializePanel(0, false);
+            InitializeButtonStates();
+        }
+
+        private void InitializeButtonStates()
+        {
+            btn2.IsEnabled = LessonContent.GetChapterStatus(1);
+            btn3.IsEnabled = LessonContent.GetChapterStatus(2);
+            btn4.IsEnabled = LessonContent.GetChapterStatus(3);
+            btn5.IsEnabled = LessonContent.GetChapterStatus(4);
+            btn6.IsEnabled = LessonContent.GetChapterStatus(5);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -38,76 +50,60 @@ namespace ALabs.LessonNFA
             mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow));
         }
 
-        private void btn1Click(object sender, RoutedEventArgs e)
+        private void btnChapterClick(object sender, RoutedEventArgs e)
         {
-            InitializePanel(0);
+            Button clickedButton = (Button)sender;
+            int chapterNumber = int.Parse(clickedButton.Name.Substring(3));
+
+            InitializePanel(chapterNumber - 1, true);
         }
-        private void btn2Click(object sender, RoutedEventArgs e)
-        {
-            InitializePanel(1);
-        }
-        private void btn3Click(object sender, RoutedEventArgs e)
-        {
-            InitializePanel(2);
-        }
-        private void btn4Click(object sender, RoutedEventArgs e)
-        {
-            InitializePanel(3);
-        }
-        private void btn5Click(object sender, RoutedEventArgs e)
-        {
-            InitializePanel(4);
-        }
-        private void btn6Click(object sender, RoutedEventArgs e)
-        {
-            InitializePanel(5);
-        }
-        private void btn7Click(object sender, RoutedEventArgs e)
-        {
-            InitializePanel(6);
-        }
+
         private void prevClick(object sender, RoutedEventArgs e)
         {
-            InitializePanel(location - 1);
+            InitializePanel(location - 1, true);
         }
         private void nextClick(object sender, RoutedEventArgs e)
         {
             string next = "btn" + (location + 2);
+            string nextNext = "btn" + (location + 3);
+            bool skipCurrent = nextNext != "btn7" ? ((Button)this.FindName(nextNext)).IsEnabled : LessonContent.GetChapterStatus(6);
 
-            if (((Button)this.FindName(next)).IsEnabled == true)
-            {
-                InitializePanel(location + 1);
-            }
-            else
-            {
-                MessageBox.Show("You must complete this chapter's assesment(s) before being allowed to proceed.");
-            }
+            //if (((Button)this.FindName(next)).IsEnabled == true)
+            //{
+                InitializePanel(location + 1, skipCurrent);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("You must complete this chapter's assesment(s) before being allowed to proceed.");
+            //}
         }
 
-        private void InitializePanel(int loc)
+        private void InitializePanel(int loc, bool skip)
         {
             btnPrev.IsEnabled = loc == 0 ? false : true;
-            btnNext.IsEnabled = loc == 6 ? false : true;
+            btnNext.IsEnabled = loc == 5 ? false : true;
             location = loc;
 
             panelContent.Children.Clear();
             switch (loc)
             {
                 case 0:
-                    LessonContent.DisplayChapter1(panelContent, btn2);
+                    LessonContent.DisplayChapter1(panelContent, btn2, skip);
                     break;
                 case 1:
-                    LessonContent.DisplayChapter2(panelContent, btn3);
+                    LessonContent.DisplayChapter2(panelContent, btn3, skip);
                     break;
                 case 2:
+                    LessonContent.DisplayChapter3(panelContent, btn4, skip);
                     break;
                 case 3:
+                    LessonContent.DisplayChapter4(panelContent, btn5, skip);
                     break;
                 case 4:
+                    LessonContent.DisplayChapter5(panelContent, btn6, skip);
                     break;
                 case 5:
-                    break;
-                case 6:
+                    LessonContent.DisplayChapter6(panelContent, skip);
                     break;
                 default:
                     break;

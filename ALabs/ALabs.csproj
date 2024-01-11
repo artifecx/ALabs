@@ -10,11 +10,19 @@
   <ItemGroup>
     <None Remove="Resources\C1E1.png" />
     <None Remove="Resources\C1E2.png" />
+    <None Remove="Resources\C2E1.png" />
+    <None Remove="Resources\C2IAQ1.png" />
+    <None Remove="Resources\C2IBQ1.png" />
+    <None Remove="Resources\C3E1.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\C1E1.png" />
     <Resource Include="Resources\C1E2.png" />
+    <Resource Include="Resources\C2E1.png" />
+    <Resource Include="Resources\C2IAQ1.png" />
+    <Resource Include="Resources\C2IBQ1.png" />
+    <Resource Include="Resources\C3E1.png" />
   </ItemGroup>
 
   <ItemGroup>
