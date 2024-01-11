@@ -68,7 +68,7 @@ namespace ALabs.LessonIntro
             + "Let's have you challenge yourself to some quizzes!"
         };
         private User authenticatedUser;
-
+        private bool endAnimation = false;
 
         public States(MainWindow mainWindow, User authenticatedUser)
         {
@@ -77,8 +77,23 @@ namespace ALabs.LessonIntro
             this.authenticatedUser = authenticatedUser;
             InitializeTvScreen();
             RunAnimationLoop();
+
+            // Checks if the user has already completed the lesson or not
+            if (authenticatedUser.lesson1progress >= 2)
+            {
+                MessageBoxResult result = MessageBox.Show("It seems that you have completed this lesson already. Do you want to play again?", "Confirmation", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show("Enjoy!");
+                }
+                else
+                {
+                    mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
+                }
+            }
         }
-        private bool endAnimation = false;
+        
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
@@ -274,7 +289,7 @@ namespace ALabs.LessonIntro
 
         private void StatesActivity_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new StatesActivity(mainWindow));
+            mainWindow.mainFrame.Navigate(new StatesActivity(mainWindow, authenticatedUser));
         }
 
         private void UpdateTvScreenText()
@@ -306,11 +321,6 @@ namespace ALabs.LessonIntro
                 }
 
             }
-        }
-
-        private void Finish_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

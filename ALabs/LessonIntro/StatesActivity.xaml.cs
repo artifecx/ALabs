@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ALabs.Database;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -56,9 +57,11 @@ namespace ALabs.LessonIntro
 
         // User Score
         private int userScore = 0;
-        public StatesActivity(MainWindow mainWindow)
+        private User authenticatedUser;
+        public StatesActivity(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
+            this.authenticatedUser = authenticatedUser;
             this.mainWindow = mainWindow;
             True1.Click += True1_Click;
             False1.Click += False1_Click;
@@ -359,6 +362,9 @@ namespace ALabs.LessonIntro
                     {
                         tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
                     }
+                    BackToDashboard.Visibility = Visibility.Visible;
+                    GoToNextLesson.Visibility = Visibility.Visible;
+
                     True1.Visibility = Visibility.Collapsed;
                     False1.Visibility = Visibility.Collapsed;
                     True2.Visibility = Visibility.Collapsed;
@@ -505,12 +511,50 @@ namespace ALabs.LessonIntro
 
         private void BackToDashboard_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate("");
+            using (UserDataContext context = new UserDataContext())
+            {
+                // Retrieve the user from the database
+                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                if (userToUpdate != null && authenticatedUser.lesson1progress < 2)
+                {
+                    // Update the lesson2progress property
+                    userToUpdate.lesson1progress = 2;
+
+                    // Save changes to the database
+                    context.SaveChanges();
+
+                    // Update the authenticatedUser in memory to reflect the changes
+                    authenticatedUser.lesson1progress = userToUpdate.lesson1progress;
+
+                    MessageBox.Show("User's lesson 1 progress updated!");
+                }
+            }
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
         }
 
         private void GoToNextLesson_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate("");
+            using (UserDataContext context = new UserDataContext())
+            {
+                // Retrieve the user from the database
+                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                if (userToUpdate != null && authenticatedUser.lesson1progress < 2)
+                {
+                    // Update the lesson2progress property
+                    userToUpdate.lesson1progress = 2;
+
+                    // Save changes to the database
+                    context.SaveChanges();
+
+                    // Update the authenticatedUser in memory to reflect the changes
+                    authenticatedUser.lesson1progress = userToUpdate.lesson1progress;
+
+                    MessageBox.Show("User's lesson 1 progress updated!");
+                }
+            }
+            mainWindow.mainFrame.Navigate(new Transitions(mainWindow, authenticatedUser));
         }
     }
 }
