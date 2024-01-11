@@ -167,7 +167,7 @@
     <value>It refers to the process of combining two languages by forming all possible combinations of strings from the first language followed by strings from the second language.</value>
   </data>
   <data name="C2P3" xml:space="preserve">
-    <value>If you can recall, we already saw an example of concatenation in the form of ends with aa! Now we'll further break down an NFA.</value>
+    <value>If you can recall, we already saw an example of concatenation in the form of ends with aa! Concatenation is as simple as putting symbols next to each other then transitioning them all together as one string to the next state.</value>
   </data>
   <data name="C2P4" xml:space="preserve">
     <value>Below is an example of an NFA that only accepts the regular language "a" and the one next to it "ab".</value>
@@ -177,6 +177,12 @@
   </data>
   <data name="C2Q1" xml:space="preserve">
     <value>Pick one: Which one is the most correct way to construct an NFA that accepts the regular language "(aba)bab"</value>
+  </data>
+  <data name="C3A1" xml:space="preserve">
+    <value>Correct! Since we are talking about a Union, otherwise an OR operation, the minimum output of "a+b" would be either "a" or "b", not ab.</value>
+  </data>
+  <data name="C3A2" xml:space="preserve">
+    <value>Incorrect. A Union is not putting symbols next to each other since that would be concatenation, it is an operation that promotes exclusivity, the output would either be "a" or "b", not both such as "ab".</value>
   </data>
   <data name="C3E1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\C3E1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -193,6 +199,21 @@
   <data name="C3P4" xml:space="preserve">
     <value>This chapter's question is now ready for you...</value>
   </data>
+  <data name="C3Q1" xml:space="preserve">
+    <value>True or False: The minimum output of "a+b" is ab.</value>
+  </data>
+  <data name="C4A1" xml:space="preserve">
+    <value>Correct! It is not the same because the Kleene star symbol will only be applied to the one at its left when there is no grouping. The minimal output of "aa*" would be "a", while for "(aa)*" it is empty.</value>
+  </data>
+  <data name="C4A2" xml:space="preserve">
+    <value>Incorrect. While they do look similar, it is important to note that without a grouping, the Kleene star will only be applied to the one to its immediate left. The minimal output of "aa*" would be "a", while for "(aa)*" it is empty.</value>
+  </data>
+  <data name="C4E1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C4E1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="C4E2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C4E2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="C4P1" xml:space="preserve">
     <value>Up next on the list is the Kleene star operation, denoted by "*".</value>
   </data>
@@ -203,10 +224,25 @@
     <value>Here's how Kleene star looks in an NFA.</value>
   </data>
   <data name="C4P4" xml:space="preserve">
-    <value>Note than when grouping a Union operation together and putting a Kleene star outside it, will lead to it looking like this.</value>
+    <value>Note than when grouping a Union operation together and putting a Kleene star outside it will lead to the NFA looking like the ones below.</value>
   </data>
   <data name="C4P5" xml:space="preserve">
     <value>Now that we got that covered, time for this chapter's question...</value>
+  </data>
+  <data name="C4Q1" xml:space="preserve">
+    <value>True or False: aa* is the same as (aa)*</value>
+  </data>
+  <data name="C5A1" xml:space="preserve">
+    <value>Correct! Epsilon transitions mean it will not read any input and allows transitions to another state without conditions.</value>
+  </data>
+  <data name="C5A2" xml:space="preserve">
+    <value>Incorrect. The epsilon transition means that the given input will not matter and will keep moving to the next state until it reaches a state that doesn't transition on e.</value>
+  </data>
+  <data name="C5E1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C5E1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="C5E2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C5E2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="C5P1" xml:space="preserve">
     <value>Now we get to learn about something new! The epsilon "ε" symbol.</value>
@@ -221,10 +257,16 @@
     <value>Epsilon transitions are often used in the construction of NFAs for concatenation and closure operations. For example, in concatenation, epsilon transitions can be used to move from the end of one string to the beginning of another without consuming any symbols.</value>
   </data>
   <data name="C5P5" xml:space="preserve">
-    <value>Here are some examples of how it looks in an NFA.</value>
+    <value>Now that we know what an e symbol is, we'll revisit the earlier examples of Union in an NFA and rewrite them in a generally much better way.</value>
   </data>
   <data name="C5P6" xml:space="preserve">
     <value>Time to take this chapter's question...</value>
+  </data>
+  <data name="C5Q1" xml:space="preserve">
+    <value>True or False: Epsilon transition "ε" or "e" in an NFA can be used to transition to another state without limits by not requiring any input symbols.</value>
+  </data>
+  <data name="C6E1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\C6E1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="C6P1" xml:space="preserve">
     <value>Now that we have all the necessary operations covered in constructing NFAs, we'll be learning about how to construct NFAs when given a Regular Expression.</value>
@@ -236,6 +278,6 @@
     <value>Here are some examples.</value>
   </data>
   <data name="C6P4" xml:space="preserve">
-    <value>Hope you got all that, here is this chapter's question...</value>
+    <value>Hope you got all that, you should now be ready to successfully tackle this lesson's challenges...</value>
   </data>
 </root>

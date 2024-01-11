@@ -210,7 +210,7 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you can recall, we already saw an example of concatenation in the form of ends with aa! Now we&apos;ll further break down an NFA..
+        ///   Looks up a localized string similar to If you can recall, we already saw an example of concatenation in the form of ends with aa! Concatenation is as simple as putting symbols next to each other then transitioning them all together as one string to the next state..
         /// </summary>
         internal static string C2P3 {
             get {
@@ -242,6 +242,24 @@ namespace ALabs.LessonNFA {
         internal static string C2Q1 {
             get {
                 return ResourceManager.GetString("C2Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct! Since we are talking about a Union, otherwise an OR operation, the minimum output of &quot;a+b&quot; would be either &quot;a&quot; or &quot;b&quot;, not ab..
+        /// </summary>
+        internal static string C3A1 {
+            get {
+                return ResourceManager.GetString("C3A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. A Union is not putting symbols next to each other since that would be concatenation, it is an operation that promotes exclusivity, the output would either be &quot;a&quot; or &quot;b&quot;, not both such as &quot;ab&quot;..
+        /// </summary>
+        internal static string C3A2 {
+            get {
+                return ResourceManager.GetString("C3A2", resourceCulture);
             }
         }
         
@@ -292,6 +310,53 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to True or False: The minimum output of &quot;a+b&quot; is ab..
+        /// </summary>
+        internal static string C3Q1 {
+            get {
+                return ResourceManager.GetString("C3Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct! It is not the same because the Kleene star symbol will only be applied to the one at its left when there is no grouping. The minimal output of &quot;aa*&quot; would be &quot;a&quot;, while for &quot;(aa)*&quot; it is empty..
+        /// </summary>
+        internal static string C4A1 {
+            get {
+                return ResourceManager.GetString("C4A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. While they do look similar, it is important to note that without a grouping, the Kleene star will only be applied to the one to its immediate left. The minimal output of &quot;aa*&quot; would be &quot;a&quot;, while for &quot;(aa)*&quot; it is empty..
+        /// </summary>
+        internal static string C4A2 {
+            get {
+                return ResourceManager.GetString("C4A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C4E1 {
+            get {
+                object obj = ResourceManager.GetObject("C4E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C4E2 {
+            get {
+                object obj = ResourceManager.GetObject("C4E2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Up next on the list is the Kleene star operation, denoted by &quot;*&quot;..
         /// </summary>
         internal static string C4P1 {
@@ -319,7 +384,7 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note than when grouping a Union operation together and putting a Kleene star outside it, will lead to it looking like this..
+        ///   Looks up a localized string similar to Note than when grouping a Union operation together and putting a Kleene star outside it will lead to the NFA looking like the ones below..
         /// </summary>
         internal static string C4P4 {
             get {
@@ -333,6 +398,53 @@ namespace ALabs.LessonNFA {
         internal static string C4P5 {
             get {
                 return ResourceManager.GetString("C4P5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True or False: aa* is the same as (aa)*.
+        /// </summary>
+        internal static string C4Q1 {
+            get {
+                return ResourceManager.GetString("C4Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct! Epsilon transitions mean it will not read any input and allows transitions to another state without conditions..
+        /// </summary>
+        internal static string C5A1 {
+            get {
+                return ResourceManager.GetString("C5A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. The epsilon transition means that the given input will not matter and will keep moving to the next state until it reaches a state that doesn&apos;t transition on e..
+        /// </summary>
+        internal static string C5A2 {
+            get {
+                return ResourceManager.GetString("C5A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C5E1 {
+            get {
+                object obj = ResourceManager.GetObject("C5E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C5E2 {
+            get {
+                object obj = ResourceManager.GetObject("C5E2", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -373,7 +485,7 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Here are some examples of how it looks in an NFA..
+        ///   Looks up a localized string similar to Now that we know what an e symbol is, we&apos;ll revisit the earlier examples of Union in an NFA and rewrite them in a generally much better way..
         /// </summary>
         internal static string C5P5 {
             get {
@@ -387,6 +499,25 @@ namespace ALabs.LessonNFA {
         internal static string C5P6 {
             get {
                 return ResourceManager.GetString("C5P6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True or False: Epsilon transition &quot;ε&quot; or &quot;e&quot; in an NFA can be used to transition to another state without limits by not requiring any input symbols..
+        /// </summary>
+        internal static string C5Q1 {
+            get {
+                return ResourceManager.GetString("C5Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C6E1 {
+            get {
+                object obj = ResourceManager.GetObject("C6E1", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -418,7 +549,7 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hope you got all that, here is this chapter&apos;s question....
+        ///   Looks up a localized string similar to Hope you got all that, you should now be ready to successfully tackle this lesson&apos;s challenges....
         /// </summary>
         internal static string C6P4 {
             get {

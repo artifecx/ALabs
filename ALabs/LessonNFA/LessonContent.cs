@@ -22,8 +22,6 @@ namespace ALabs.LessonNFA
         private static readonly ResourceManager ResourceManager = new ResourceManager("ALabs.LessonNFA.ContentResources", typeof(LessonContent).Assembly);
         private static Dictionary<int, bool> chapterStatus = new Dictionary<int, bool>();
         private static DispatcherTimer? revealTimer;
-        private static RadioButton? radioButtonA;
-        private static RadioButton? radioButtonB;
 
         public static IEnumerable<DictionaryEntry> AssignVar(string start, int end)
         {
@@ -67,21 +65,10 @@ namespace ALabs.LessonNFA
 
             foreach (var entry in entries)
             {
-                /*TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);*/
-
                 await RevealText(panel, entry.Value.ToString(), 5, skip);
 
                 if (entry.Key.ToString().EndsWith(positionQ))
                 {
-                    MessageBox.Show("Here");
                     StackPanel imagePanel = new StackPanel
                     {
                         Orientation = Orientation.Horizontal,
@@ -94,12 +81,56 @@ namespace ALabs.LessonNFA
                         Image image = new Image
                         {
                             Source = new BitmapImage(new Uri($"pack://application:,,,/ALabs;component/Resources/C{chapterNumber}E{i}.png", UriKind.Absolute)),
-                            Width = 650,
+                            Width = chapterNumber == 1 ? 650 : 800,
                             Stretch = Stretch.Uniform
                         };
 
                         imagePanel.Children.Add(image);
                     }
+
+                    panel.Children.Add(imagePanel);
+                }
+
+                // hard coded for chapter 4
+                if (entry.Key.ToString().EndsWith("P4") && prefixP == "C4P")
+                {
+                    StackPanel imagePanel = new StackPanel
+                    {
+                        Orientation = Orientation.Horizontal,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+
+                    Image image = new Image
+                    {
+                        Source = new BitmapImage(new Uri($"pack://application:,,,/ALabs;component/Resources/C4E2.png", UriKind.Absolute)),
+                        Width = 800,
+                        Stretch = Stretch.Uniform
+                    };
+
+                    imagePanel.Children.Add(image);
+
+                    panel.Children.Add(imagePanel);
+                }
+
+                // hard coded for chapter 5
+                if (entry.Key.ToString().EndsWith("P5") && prefixP == "C5P")
+                {
+                    StackPanel imagePanel = new StackPanel
+                    {
+                        Orientation = Orientation.Horizontal,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+
+                    Image image = new Image
+                    {
+                        Source = new BitmapImage(new Uri($"pack://application:,,,/ALabs;component/Resources/C5E2.png", UriKind.Absolute)),
+                        Width = 800,
+                        Stretch = Stretch.Uniform
+                    };
+
+                    imagePanel.Children.Add(image);
 
                     panel.Children.Add(imagePanel);
                 }
@@ -139,7 +170,7 @@ namespace ALabs.LessonNFA
                     Padding = new Thickness(10)
                 };
 
-                if(chapterNumber == 1) { 
+                if(chapterNumber != 2) { 
                     RadioButton radioButtonTrue = new RadioButton
                     {
                         Content = "True",
@@ -175,19 +206,74 @@ namespace ALabs.LessonNFA
                     {
                         if (radioButtonTrue.IsChecked == true)
                         {
-                            resultTextBlock.Text = ResourceManager.GetString("C1A1");
-                            resultTextBlock.Foreground = Brushes.Green;
-                            questionPanel.Children.Remove(resultTextBlock);
-                            questionPanel.Children.Add(resultTextBlock);
+                            if(chapterNumber == 1)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C1A1");
+                                resultTextBlock.Foreground = Brushes.Green;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
 
-                            CompleteChapter(1);
+                                CompleteChapter(1);
+                            }
+                            else if(chapterNumber == 3)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C3A2");
+                                resultTextBlock.Foreground = Brushes.Red;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+                            } 
+                            else if(chapterNumber == 4)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C4A2");
+                                resultTextBlock.Foreground = Brushes.Red;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+                            }
+                            else if (chapterNumber == 5)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C5A1");
+                                resultTextBlock.Foreground = Brushes.Green;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+
+                                CompleteChapter(5);
+                            }
                         }
                         else if (radioButtonFalse.IsChecked == true)
                         {
-                            resultTextBlock.Text = ResourceManager.GetString("C1A2");
-                            resultTextBlock.Foreground = Brushes.Red;
-                            questionPanel.Children.Remove(resultTextBlock);
-                            questionPanel.Children.Add(resultTextBlock);
+                            if (chapterNumber == 1)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C1A2");
+                                resultTextBlock.Foreground = Brushes.Red;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+                            }
+                            else if (chapterNumber == 3)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C3A1");
+                                resultTextBlock.Foreground = Brushes.Green;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+
+                                CompleteChapter(3);
+                            }
+                            else if (chapterNumber == 4)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C4A1");
+                                resultTextBlock.Foreground = Brushes.Green;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+
+                                CompleteChapter(4);
+                            }
+                            else if (chapterNumber == 5)
+                            {
+                                resultTextBlock.Text = ResourceManager.GetString("C5A2");
+                                resultTextBlock.Foreground = Brushes.Red;
+                                questionPanel.Children.Remove(resultTextBlock);
+                                questionPanel.Children.Add(resultTextBlock);
+                            }
+                            
                         }
 
                         SetButtonState(button, GetChapterStatus(1));
@@ -205,7 +291,7 @@ namespace ALabs.LessonNFA
 
                     panel.Children.Add(border);
                 } 
-                else if(chapterNumber == 2)
+                else
                 {
                     Image image1 = new Image
                     {
@@ -324,9 +410,9 @@ namespace ALabs.LessonNFA
                 {
                     if (skipReveal)
                     {
-                        textBlock.Text = text; // Skip to the end
+                        textBlock.Text = text;
                         revealTimer.Stop();
-                        tcs.SetResult(true); // Signal completion
+                        tcs.SetResult(true);
                     }
                     else
                     {
@@ -337,7 +423,7 @@ namespace ALabs.LessonNFA
                 else
                 {
                     revealTimer.Stop();
-                    tcs.SetResult(true); // Signal completion
+                    tcs.SetResult(true);
                 }
             };
             revealTimer.Start();
@@ -352,606 +438,22 @@ namespace ALabs.LessonNFA
 
         public static void DisplayChapter3(StackPanel panel, Button button, bool skip)
         {
-            DisplayChapter(panel, button, 3, "C3P", "P3", 4, 0, skip);
+            DisplayChapter(panel, button, 3, "C3P", "P3", 4, 1, skip);
         }
 
         public static void DisplayChapter4(StackPanel panel, Button button, bool skip)
         {
-            DisplayChapter(panel, button, 4, "C4P", "P3", 5, 0, skip);
+            DisplayChapter(panel, button, 4, "C4P", "P3", 5, 1, skip);
         }
 
         public static void DisplayChapter5(StackPanel panel, Button button, bool skip)
         {
-            DisplayChapter(panel, button, 5, "C5P", "P5", 6, 0, skip);
+            DisplayChapter(panel, button, 5, "C5P", "P4", 6, 1, skip);
         }
 
         public static void DisplayChapter6(StackPanel panel, bool skip)
         {
-            DisplayChapter(panel, null, 6, "C6P", "P3", 4, 0, skip);
+            DisplayChapter(panel, null, 6, "C6P", "P3", 4, 1, skip);
         }
-
-        /*public static void DisplayChapter1(StackPanel panel, Button button)
-        {
-            //SetButtonState(button, chapter1);
-
-            var entries = AssignVar("C1P", 0, 4);
-            var questions = AssignVar("C1Q", 1, 0);
-
-            foreach (var entry in entries)
-            {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);
-
-                if (entry.Key.ToString().EndsWith("P2"))
-                {
-                    // Create a StackPanel for images
-                    StackPanel imagePanel = new StackPanel
-                    {
-                        Orientation = Orientation.Horizontal,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-
-                    Image image1 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E1.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    Image image2 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E2.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform 
-                    };
-
-                    imagePanel.Children.Add(image1);
-                    imagePanel.Children.Add(image2);
-
-                    panel.Children.Add(imagePanel);
-                }
-            }
-
-            foreach(var question in questions)
-            {
-                Border border = new Border
-                {
-                    BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(1),
-                    Width = 800,
-                    Margin = new Thickness(0,0,0,15)
-                };
-
-                StackPanel questionPanel = new StackPanel
-                {
-                    Orientation = Orientation.Vertical,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center
-                };
-
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = question.Value.ToString(),
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = new Thickness(10)
-                };
-
-                RadioButton radioButtonTrue = new RadioButton
-                {
-                    Content = "True",
-                    GroupName = "AnswerGroup",
-                    FontSize = 16,
-                    Margin = new Thickness(10,0,0,0)
-                };
-
-                RadioButton radioButtonFalse = new RadioButton
-                {
-                    Content = "False",
-                    GroupName = "AnswerGroup",
-                    FontSize = 16,
-                    Margin = new Thickness(10, 0, 0, 0)
-                };
-
-                Button submitButton = new Button
-                {
-                    Content = "Submit",
-                    Width = 100,
-                    FontSize = 16,
-                    Margin = new Thickness(0,0,0,10)
-                };
-
-                TextBlock resultTextBlock = new TextBlock 
-                { 
-                    FontSize = 16,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    TextWrapping = TextWrapping.Wrap,
-                    Padding = new Thickness(10)
-                };
-                submitButton.Click += (sender, e) =>
-                {
-                    if (radioButtonTrue.IsChecked == true)
-                    {
-                        resultTextBlock.Text = ResourceManager.GetString("C1A1");
-                        resultTextBlock.Foreground = Brushes.Green;
-                        questionPanel.Children.Remove(resultTextBlock);
-                        questionPanel.Children.Add(resultTextBlock);
-
-                        CompleteChapter(1);
-                    }
-                    else if (radioButtonFalse.IsChecked == true)
-                    {
-                        resultTextBlock.Text = ResourceManager.GetString("C1A2");
-                        resultTextBlock.Foreground = Brushes.Red;
-                        questionPanel.Children.Remove(resultTextBlock);
-                        questionPanel.Children.Add(resultTextBlock);
-                    }
-
-                    SetButtonState(button, GetChapterStatus(1));
-                };
-
-                radioButtonTrue.Click += (sender, e) => radioButtonFalse.IsChecked = false;
-                radioButtonFalse.Click += (sender, e) => radioButtonTrue.IsChecked = false;
-
-                questionPanel.Children.Add(textBlock);
-                questionPanel.Children.Add(radioButtonTrue);
-                questionPanel.Children.Add(radioButtonFalse);
-                questionPanel.Children.Add(submitButton);
-
-                border.Child = questionPanel;
-
-                panel.Children.Add(border);
-            }
-        }
-
-        public static void DisplayChapter2(StackPanel panel, Button button)
-        {
-            //SetButtonState(button, chapter2);
-
-            var entries = AssignVar("C2P", 0, 5);
-            var questions = AssignVar("C2Q", 1, 0);
-
-            foreach (var entry in entries)
-            {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);
-
-                if (entry.Key.ToString().EndsWith("P4"))
-                {
-                    // Create a StackPanel for images
-                    StackPanel imagePanel = new StackPanel
-                    {
-                        Orientation = Orientation.Horizontal,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-
-                    Image image1 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C2E1.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    imagePanel.Children.Add(image1);
-
-                    panel.Children.Add(imagePanel);
-                }
-            }
-
-            foreach (var question in questions)
-            {
-                Border border = new Border
-                {
-                    BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(1),
-                    Width = 800,
-                    Margin = new Thickness(0, 0, 0, 15)
-                };
-
-                StackPanel questionPanel = new StackPanel
-                {
-                    Orientation = Orientation.Vertical,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center
-                };
-
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = question.Value.ToString(),
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = new Thickness(10)
-                };
-
-                Image image1 = new Image
-                {
-                    Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C2IBQ1.png", UriKind.Absolute)),
-                    Height = 60,
-                    Stretch = Stretch.Uniform
-                };
-
-                Image image2 = new Image
-                {
-                    Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C2IAQ1.png", UriKind.Absolute)),
-                    Height = 60,
-                    Stretch = Stretch.Uniform
-                };
-
-                RadioButton radioButtonA = new RadioButton
-                {
-                    Content = image1,
-                    GroupName = "AnswerGroup",
-                    FontSize = 16,
-                    Margin = new Thickness(10, 0, 0, 0)
-                };
-
-                RadioButton radioButtonB = new RadioButton
-                {
-                    Content = image2,
-                    GroupName = "AnswerGroup",
-                    FontSize = 16,
-                    Margin = new Thickness(10, 10, 0, 0)
-                };
-
-                Button submitButton = new Button
-                {
-                    Content = "Submit",
-                    Width = 100,
-                    FontSize = 16,
-                    Margin = new Thickness(0, 10, 0, 10)
-                };
-
-                TextBlock resultTextBlock = new TextBlock
-                {
-                    FontSize = 16,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    TextWrapping = TextWrapping.Wrap,
-                    Padding = new Thickness(10)
-                };
-                submitButton.Click += (sender, e) =>
-                {
-                    if (radioButtonB.IsChecked == true)
-                    {
-                        resultTextBlock.Text = ResourceManager.GetString("C2A1");
-                        resultTextBlock.Foreground = Brushes.Green;
-                        questionPanel.Children.Remove(resultTextBlock);
-                        questionPanel.Children.Add(resultTextBlock);
-
-                        CompleteChapter(2);
-                    }
-                    else if (radioButtonA.IsChecked == true)
-                    {
-                        resultTextBlock.Text = ResourceManager.GetString("C2A2");
-                        resultTextBlock.Foreground = Brushes.Red;
-                        questionPanel.Children.Remove(resultTextBlock);
-                        questionPanel.Children.Add(resultTextBlock);
-                    }
-
-                    SetButtonState(button, GetChapterStatus(2));
-                };
-
-                radioButtonA.Click += (sender, e) => radioButtonB.IsChecked = false;
-                radioButtonB.Click += (sender, e) => radioButtonA.IsChecked = false;
-
-                questionPanel.Children.Add(textBlock);
-                questionPanel.Children.Add(radioButtonA);
-                questionPanel.Children.Add(radioButtonB);
-                questionPanel.Children.Add(submitButton);
-
-                border.Child = questionPanel;
-
-                panel.Children.Add(border);
-            }
-        }
-
-        public static void DisplayChapter3(StackPanel panel, Button button)
-        {
-            //SetButtonState(button, chapter2);
-
-            var entries = AssignVar("C3P", 0, 4);
-            var questions = AssignVar("C3Q", 1, 0);
-
-            foreach (var entry in entries)
-            {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);
-
-                if (entry.Key.ToString().EndsWith("P3"))
-                {
-                    // Create a StackPanel for images
-                    StackPanel imagePanel = new StackPanel
-                    {
-                        Orientation = Orientation.Horizontal,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-
-                    Image image1 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C2E1.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    imagePanel.Children.Add(image1);
-
-                    panel.Children.Add(imagePanel);
-                }
-            }
-
-            foreach (var question in questions)
-            {
-                Border border = new Border
-                {
-                    BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(1),
-                    Width = 800,
-                    Margin = new Thickness(0, 0, 0, 15)
-                };
-
-                StackPanel questionPanel = new StackPanel
-                {
-                    Orientation = Orientation.Vertical,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center
-                };
-
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = question.Value.ToString(),
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = new Thickness(10)
-                };
-
-                Image image1 = new Image
-                {
-                    Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C2IBQ1.png", UriKind.Absolute)),
-                    Height = 60,
-                    Stretch = Stretch.Uniform
-                };
-
-                Image image2 = new Image
-                {
-                    Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C2IAQ1.png", UriKind.Absolute)),
-                    Height = 60,
-                    Stretch = Stretch.Uniform
-                };
-
-                RadioButton radioButtonA = new RadioButton
-                {
-                    Content = image1,
-                    GroupName = "AnswerGroup",
-                    FontSize = 16,
-                    Margin = new Thickness(10, 0, 0, 0)
-                };
-
-                RadioButton radioButtonB = new RadioButton
-                {
-                    Content = image2,
-                    GroupName = "AnswerGroup",
-                    FontSize = 16,
-                    Margin = new Thickness(10, 10, 0, 0)
-                };
-
-                Button submitButton = new Button
-                {
-                    Content = "Submit",
-                    Width = 100,
-                    FontSize = 16,
-                    Margin = new Thickness(0, 10, 0, 10)
-                };
-
-                TextBlock resultTextBlock = new TextBlock
-                {
-                    FontSize = 16,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    TextWrapping = TextWrapping.Wrap,
-                    Padding = new Thickness(10)
-                };
-                submitButton.Click += (sender, e) =>
-                {
-                    if (radioButtonB.IsChecked == true)
-                    {
-                        resultTextBlock.Text = ResourceManager.GetString("C2A1");
-                        resultTextBlock.Foreground = Brushes.Green;
-                        questionPanel.Children.Remove(resultTextBlock);
-                        questionPanel.Children.Add(resultTextBlock);
-
-                        CompleteChapter(2);
-                    }
-                    else if (radioButtonA.IsChecked == true)
-                    {
-                        resultTextBlock.Text = ResourceManager.GetString("C2A2");
-                        resultTextBlock.Foreground = Brushes.Red;
-                        questionPanel.Children.Remove(resultTextBlock);
-                        questionPanel.Children.Add(resultTextBlock);
-                    }
-
-                    SetButtonState(button, GetChapterStatus(2));
-                };
-
-                radioButtonA.Click += (sender, e) => radioButtonB.IsChecked = false;
-                radioButtonB.Click += (sender, e) => radioButtonA.IsChecked = false;
-
-                questionPanel.Children.Add(textBlock);
-                questionPanel.Children.Add(radioButtonA);
-                questionPanel.Children.Add(radioButtonB);
-                questionPanel.Children.Add(submitButton);
-
-                border.Child = questionPanel;
-
-                panel.Children.Add(border);
-            }
-        }
-
-        public static void DisplayChapter4(StackPanel panel, Button button)
-        {
-            var entries = AssignVar("C4P", 0, 5);
-            var questions = AssignVar("C4Q", 1, 0);
-
-            foreach (var entry in entries)
-            {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);
-
-                if (entry.Key.ToString().EndsWith("P3"))
-                {
-                    // Create a StackPanel for images
-                    StackPanel imagePanel = new StackPanel
-                    {
-                        Orientation = Orientation.Horizontal,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-
-                    Image image1 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E1.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    Image image2 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E2.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    imagePanel.Children.Add(image1);
-                    imagePanel.Children.Add(image2);
-
-                    panel.Children.Add(imagePanel);
-                }
-            }
-        }
-        public static void DisplayChapter5(StackPanel panel, Button button)
-        {
-            var entries = AssignVar("C5P", 0, 6);
-            var questions = AssignVar("C5Q", 1, 0);
-
-            foreach (var entry in entries)
-            {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);
-
-                if (entry.Key.ToString().EndsWith("P5"))
-                {
-                    // Create a StackPanel for images
-                    StackPanel imagePanel = new StackPanel
-                    {
-                        Orientation = Orientation.Horizontal,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-
-                    Image image1 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E1.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    Image image2 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E2.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    imagePanel.Children.Add(image1);
-                    imagePanel.Children.Add(image2);
-
-                    panel.Children.Add(imagePanel);
-                }
-            }
-        }
-
-        public static void DisplayChapter6(StackPanel panel)
-        {
-            var entries = AssignVar("C6P", 0, 4);
-            var questions = AssignVar("C6Q", 1, 0);
-
-            foreach (var entry in entries)
-            {
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = entry.Value.ToString() + "\n",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16,
-                    Padding = entry.Key.ToString().EndsWith("P1") ? new Thickness(15, 15, 15, 0) : new Thickness(15, 0, 15, 0)
-                };
-
-                panel.Children.Add(textBlock);
-
-                if (entry.Key.ToString().EndsWith("P3"))
-                {
-                    // Create a StackPanel for images
-                    StackPanel imagePanel = new StackPanel
-                    {
-                        Orientation = Orientation.Horizontal,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-
-                    Image image1 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E1.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    Image image2 = new Image
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/ALabs;component/Resources/C1E2.png", UriKind.Absolute)),
-                        Width = 650,
-                        Stretch = Stretch.Uniform
-                    };
-
-                    imagePanel.Children.Add(image1);
-                    imagePanel.Children.Add(image2);
-
-                    panel.Children.Add(imagePanel);
-                }
-            }
-        }*/
     }
 }

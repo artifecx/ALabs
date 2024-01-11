@@ -68,14 +68,14 @@ namespace ALabs.LessonNFA
             string nextNext = "btn" + (location + 3);
             bool skipCurrent = nextNext != "btn7" ? ((Button)this.FindName(nextNext)).IsEnabled : LessonContent.GetChapterStatus(6);
 
-            //if (((Button)this.FindName(next)).IsEnabled == true)
-            //{
+            if (((Button)this.FindName(next)).IsEnabled == true)
+            {
                 InitializePanel(location + 1, skipCurrent);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("You must complete this chapter's assesment(s) before being allowed to proceed.");
-            //}
+            }
+            else
+            {
+                MessageBox.Show("You must complete this chapter's assesment(s) before being allowed to proceed.");
+            }
         }
 
         private void InitializePanel(int loc, bool skip)
