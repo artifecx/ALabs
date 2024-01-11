@@ -418,6 +418,7 @@ namespace ALabs.LessonIntro
                     {
                         tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
                     }
+
                     BackToDashboard.Visibility = Visibility.Visible;
                     True1.Visibility = Visibility.Collapsed;
                     False1.Visibility = Visibility.Collapsed;
@@ -504,12 +505,26 @@ namespace ALabs.LessonIntro
 
         private void BackToDashboard_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
-        }
+            using (UserDataContext context = new UserDataContext())
+            {
+                // Retrieve the user from the database
+                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
 
-        private void GoToNextLesson_Click(object sender, RoutedEventArgs e)
-        {
-            mainWindow.mainFrame.Navigate("");
+                if (userToUpdate != null && authenticatedUser.lesson1progress < 4)
+                {
+                    // Update the lesson2progress property
+                    userToUpdate.lesson1progress = 4;
+
+                    // Save changes to the database
+                    context.SaveChanges();
+
+                    // Update the authenticatedUser in memory to reflect the changes
+                    authenticatedUser.lesson1progress = userToUpdate.lesson1progress;
+
+                    MessageBox.Show("User's lesson 3 progress updated!");
+                }
+            }
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
         }
     }
 }

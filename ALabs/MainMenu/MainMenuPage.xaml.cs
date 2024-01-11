@@ -26,6 +26,8 @@ namespace ALabs
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
+            // MessageBox.Show(authenticatedUser.Name.ToString());
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)

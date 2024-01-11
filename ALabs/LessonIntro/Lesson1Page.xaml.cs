@@ -25,11 +25,33 @@ namespace ALabs.LessonIntro
     public partial class Lesson1Page : Page
     {
         private readonly MainWindow mainWindow;
-        public Lesson1Page(MainWindow mainWindow)
+        private User authenticatedUser;
+        private int lesson1progress;
+        public Lesson1Page(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            
+            this.authenticatedUser = authenticatedUser;
+
+            lesson1progress = authenticatedUser.lesson1progress;
+
+            if(lesson1progress == 2)
+            {
+                Transitions.IsEnabled = true;
+            }
+            if(lesson1progress == 3)
+            {
+                Transitions.IsEnabled = true;
+                Inputs.IsEnabled = true;
+                ATInfo.IsEnabled = true;
+            }
+            if(lesson1progress == 4)
+            {
+                Transitions.IsEnabled = true;
+                Inputs.IsEnabled = true;
+                ATInfo.IsEnabled = true;
+                IntroductionQuiz.IsEnabled = true;
+            }
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -38,7 +60,7 @@ namespace ALabs.LessonIntro
 
         private void States_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new States(mainWindow));
+             mainWindow.mainFrame.Navigate(new States(mainWindow, authenticatedUser));
         }
 
         private void Transitions_Click(object sender, RoutedEventArgs e)
