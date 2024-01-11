@@ -41,7 +41,6 @@ namespace ALabs.LessonIntro
         };
 
         private int currentQuestionIndex = 0;
-        private int currentState = 0;
         private int currentCharIndex = 0;
 
         private DispatcherTimer timer;
