@@ -7,7 +7,37 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Lesson3Page">
-
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="DefaultButtonStyle">
+            <!-- Your button style here -->
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#A7A7A7"/>
+            <Setter Property="BorderBrush" Value="#A7A7A7"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#636363"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2E3B42"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <!-- Distance between content and top -->
@@ -24,7 +54,7 @@
 
         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Button Content="&lt; Lessons" Width="100" Height="50" Click="BackButton_Click"/>
+                <Button Content="&lt; Lessons" Width="100" Height="50" Click="BackButton_Click" Style="{StaticResource DefaultButtonStyle}"/>
             </StackPanel>
             <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
                 <TextBlock VerticalAlignment="Center" Text="❤" FontSize="20" Foreground="Red" Name="Heart0"/>
@@ -34,12 +64,12 @@
                 <TextBlock VerticalAlignment="Center" Margin="100,0,0,0" Text="❤" FontSize="20" Foreground="Red" Name="Heart4"/>
             </Grid>
             <StackPanel Width="300" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Button Content="1. Non-deterministic Finite Automata" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn1" IsEnabled="True"/>
-                <Button Content="2. Concatenation" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn2" IsEnabled="False"/>
-                <Button Content="3. Union" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn3" IsEnabled="False"/>
-                <Button Content="4. Kleene Star" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn4" IsEnabled="False"/>
-                <Button Content="5. e symbol" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn5" IsEnabled="False"/>
-                <Button Content="6. NFA Construction from a Regular Expression" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn6" IsEnabled="False"/>
+                <Button Content="1. Non-deterministic Finite Automata" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn1" IsEnabled="True" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="2. Concatenation" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn2" IsEnabled="False" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="3. Union" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn3" IsEnabled="False" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="4. Kleene Star" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn4" IsEnabled="False" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="5. e symbol" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn5" IsEnabled="False" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="6. NFA Construction from a Regular Expression" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn6" IsEnabled="False" Style="{StaticResource DefaultButtonStyle}"/>
             </StackPanel>
             
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="350,40,0,0" Width="1400" Height="750" Name="panel" Grid.RowSpan="4" Grid.Row="1">
@@ -53,8 +83,8 @@
         
         <Grid Grid.Row="3">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Content="&lt; Prev" Margin="350,0,1000,0" Width="100" Height="50" Click="prevClick" Name="btnPrev" IsEnabled="True"/>
-                <Button Content="Next &gt;" Width="100" Height="50" Click="nextClick" Name="btnNext" IsEnabled="True"/>
+                <Button Content="&lt; Prev" Margin="350,0,1000,0" Width="100" Height="50" Click="prevClick" Name="btnPrev" IsEnabled="True" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="Next &gt;" Width="100" Height="50" Click="nextClick" Name="btnNext" IsEnabled="True" Style="{StaticResource DefaultButtonStyle}"/>
             </StackPanel>
         </Grid>
     </Grid>

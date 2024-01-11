@@ -10,6 +10,10 @@
         WindowState="Maximized"
         ResizeMode="NoResize">
     <Grid>
+        <!-- <Grid.Background> -->
+        <!-- <ImageBrush ImageSource="/Resources/factory2.png"/> -->
+
+        <!--</Grid.Background> -->
         <Frame x:Name="mainFrame"/>
     </Grid>
 </Window>

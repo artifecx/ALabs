@@ -8,17 +8,95 @@
       d:DesignHeight="1080" 
       d:DesignWidth="1920"
       Title="Lesson1Page">
-
+    
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="DefaultButtonStyle">
+            <!-- Your button style here -->
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#A7A7A7"/>
+            <Setter Property="BorderBrush" Value="#A7A7A7"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#636363"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2E3B42"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="265,178,0,0">
-            <Button Content="States"                       Click ="States_Click"           Width="300" Height="50" Name="States"           IsEnabled="True"  MouseEnter="States_MouseEnter"           MouseLeave="States_MouseLeave"           Margin="30"/>
-            <Button Content="Transitions"                  Click ="Transitions_Click"      Width="300" Height="50" Name="Transitions"      IsEnabled="False" MouseEnter="Transitions_MouseEnter"      MouseLeave="Transitions_MouseLeave"      Margin="30"/>
-            <Button Content="Inputs"                       Click ="Inputs_Click"           Width="300" Height="50" Name="Inputs"           IsEnabled="False" MouseEnter="Inputs_MouseEnter"           MouseLeave="Inputs_MouseLeave"           Margin="30"/>
-            <Button Content="Introduction Quiz"            Click ="IntroductionQuiz_Click" Width="300" Height="50" Name="IntroductionQuiz" IsEnabled="False" MouseEnter="IntroductionQuiz_MouseEnter" MouseLeave="IntroductionQuiz_MouseLeave" Margin="30"/>
-            <Button Content="Automata Theory Information"  Click ="ATInfo_Click"           Width="300" Height="50" Name="ATInfo"           IsEnabled="False" Margin="30"/>
-        </StackPanel>
-        <TextBox  Padding="30" TextAlignment="Left" FontFamily="sans-serif" FontWeight="Regular" FontSize="20" Margin="350,-150,20,20" TextWrapping="Wrap"  Width="1000" Height="500" Name="tbL" IsReadOnly="True" VerticalAlignment="Center" VerticalScrollBarVisibility="Auto" />
-        <Button Content="Back" Width="600" Height="50" Click="BackButton_Click" Margin="10,600,0,0"/>
+        <Grid.RowDefinitions>
+            <!-- Distance between content and top -->
+            <RowDefinition Height="80"/>
+            <!-- Main content -->
+            <RowDefinition Height="800"/>
+            <!-- Distance between main content and buttons-->
+            <RowDefinition Height="20"/>
+            <!-- Buttons below content -->
+            <RowDefinition Height="80"/>
+            <!-- Distance between lower buttons and bottom -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+            <Border Grid.Row="1"
+                    CornerRadius="20"
+                    Background="#F5F5F5"
+                    BorderBrush="black"
+                    BorderThickness="2"
+                    Width="1500">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+            </Border>
+        
+        <Grid Grid.Row="1">
+            <StackPanel HorizontalAlignment="Center" 
+                            Margin="0,140,0,0">
+                <TextBlock FontSize="30">
+                        Lesson 1 | Introduction to Automata Theory
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="265,185 ,0,0">
+                <Button Content="States"                       Click ="States_Click"           Width="300" Height="50" Name="States"           IsEnabled="True"  MouseEnter="States_MouseEnter"           MouseLeave="States_MouseLeave"           Margin="30" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="Transitions"                  Click ="Transitions_Click"      Width="300" Height="50" Name="Transitions"      IsEnabled="False" MouseEnter="Transitions_MouseEnter"      MouseLeave="Transitions_MouseLeave"      Margin="30" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="Inputs"                       Click ="Inputs_Click"           Width="300" Height="50" Name="Inputs"           IsEnabled="False" MouseEnter="Inputs_MouseEnter"           MouseLeave="Inputs_MouseLeave"           Margin="30" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="Introduction Quiz"            Click ="IntroductionQuiz_Click" Width="300" Height="50" Name="IntroductionQuiz" IsEnabled="False" MouseEnter="IntroductionQuiz_MouseEnter" MouseLeave="IntroductionQuiz_MouseLeave" Margin="30" Style="{StaticResource DefaultButtonStyle}"/>
+                <Button Content="Automata Theory Information"  Click ="ATInfo_Click"           Width="300" Height="50" Name="ATInfo"           IsEnabled="False" Margin="30" Style="{StaticResource DefaultButtonStyle}"/>
+            </StackPanel>
+            <TextBox  Padding="30" 
+                      TextAlignment="Left" 
+                      FontFamily="sans-serif" 
+                      FontWeight="Regular" 
+                      FontSize="20" 
+                      Margin="350,150,20,20" 
+                      TextWrapping="Wrap"  
+                      Width="1000" 
+                      Height="500" 
+                      Name="tbL" 
+                      IsReadOnly="True" 
+                      VerticalAlignment="Center" 
+                      VerticalScrollBarVisibility="Auto" />
+            <StackPanel>
+                <Button Content="Back" Width="100" Height="50" Click="BackButton_Click" HorizontalAlignment="Left" Margin="295,100" Style="{StaticResource DefaultButtonStyle}" />
+            </StackPanel>
+        </Grid> 
     </Grid>
 </Page>
 

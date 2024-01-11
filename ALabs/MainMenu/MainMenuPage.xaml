@@ -7,7 +7,37 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="MainPage">
-
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="DefaultButtonStyle">
+            <!-- Your button style here -->
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#A7A7A7"/>
+            <Setter Property="BorderBrush" Value="#A7A7A7"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#636363"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2E3B42"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <!-- Distance between content and top -->
@@ -21,14 +51,25 @@
             <!-- Distance lower content and bottom -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
+        
+        <Border Grid.Row="1"
+                CornerRadius="20"
+                Background="#F5F5F5"
+                BorderBrush="black"
+                BorderThickness="2"
+                Width="1200">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
+        </Border>
+        
         <!-- Upper Content -->
-        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <!-- Left content -->
                 <ColumnDefinition Width="Auto"/>
                 <!-- Space between -->
-                <ColumnDefinition Width="1000"/>
+                <ColumnDefinition Width="900"/>
                 <!-- Right content -->
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
@@ -39,13 +80,14 @@
         </Grid>
 
         <!-- Border lines -->
-        <Border Grid.Row="1" BorderBrush="black" BorderThickness="2" Width="1300">
-            <Border.Effect>
-                <DropShadowEffect/>
-            </Border.Effect>
-        </Border>
-        
-        <Border Grid.Row="3" BorderBrush="black" BorderThickness="2" Width="1200">
+
+
+        <Border Grid.Row="3"
+                CornerRadius="20"
+                Background="#F5F5F5"
+                BorderBrush="black"
+                BorderThickness="2"
+                Width="1200">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
@@ -53,11 +95,30 @@
 
         <!-- Lower Content -->
         <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Play" Margin="0,0,0,10" Width="600" Height="80" Click="PlayButton_Click"/>
-            <Button Content="Lessons" Margin="0,0,0,10" Width="600" Height="80" Click="LessonsButton_Click"/>
-            <Button Content="Settings" Margin="0,0,0,60" Width="600" Height="80" Click="SettingsButton_Click"/>
+            <Button Content="Play"
+                    Style="{StaticResource DefaultButtonStyle}"
+                    Margin="0,0,0,10"
+                    Width="600"
+                    Height="80"
+                    Click="PlayButton_Click"/>
+            <Button Content="Lessons"
+                    Style="{StaticResource DefaultButtonStyle}"
+                    Margin="0,0,0,10"
+                    Width="600"
+                    Height="80"
+                    Click="LessonsButton_Click"/>
+            <Button Content="Settings"
+                    Style="{StaticResource DefaultButtonStyle}"
+                    Margin="0,0,0,60"
+                    Width="600"
+                    Height="80"
+                    Click="SettingsButton_Click"/>
 
-            <Button Content="Quit" Width="600" Height="50" Click="QuitButton_Click"/>
+            <Button Content="Quit"
+                    Style="{StaticResource DefaultButtonStyle}"
+                    Width="600"
+                    Height="50"
+                    Click="QuitButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>
