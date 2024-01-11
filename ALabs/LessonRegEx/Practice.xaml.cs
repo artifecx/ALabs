@@ -1,4 +1,5 @@
 ﻿using System;
+using ALabs.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,17 +22,19 @@ namespace ALabs.LessonRegEx
     public partial class Practice : Page
     {
         private readonly MainWindow mainWindow;
+        private readonly User authenticatedUser;
         int q = 1;
-        public Practice(MainWindow mainWindow)
+        public Practice(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
             tb1.TextAlignment = TextAlignment.Center;
             tb1.Text = "Regular Expression that starts with bba";
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Lesson2Page(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson2Page(mainWindow, authenticatedUser));
         }
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +53,7 @@ namespace ALabs.LessonRegEx
             } else
             {
                 MessageBox.Show("Congratulations you are now ready to take on the Challenges.");
-                mainWindow.mainFrame.Navigate(new PlayPage(mainWindow));//change to the regexchallenges page
+                mainWindow.mainFrame.Navigate(new PlayPage(mainWindow, authenticatedUser));//change to the regexchallenges page
             }
 
         }

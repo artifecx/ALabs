@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ALabs.Database;
 
 namespace ALabs
 {
@@ -22,23 +23,24 @@ namespace ALabs
     public partial class PlayPage : Page
     {
         private readonly MainWindow mainWindow;
-
-        public PlayPage(MainWindow mainWindow)
+        private User authenticatedUser;
+        public PlayPage(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             // Go back to MainPage
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow, authenticatedUser));
         }
 
         private void RegexChallenge_Click(object sender, RoutedEventArgs e)
         {
             // Go back to MainPage
-            mainWindow.mainFrame.Navigate(new ChallengeRegex(mainWindow));
+            mainWindow.mainFrame.Navigate(new ChallengeRegex(mainWindow, authenticatedUser));
         }
     }
 }

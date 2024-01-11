@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ALabs.Database;
 
 namespace ALabs.LessonIntro
 {
@@ -56,11 +57,12 @@ namespace ALabs.LessonIntro
             // 8
             "Now that's finished, let's test your learnings about Transitions!"
         };
-
-        public Transitions(MainWindow mainWindow)
+        private User authenticatedUser;
+        public Transitions(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
             InitializeTvScreen();
             RunAnimationLoop();
         }
@@ -68,7 +70,7 @@ namespace ALabs.LessonIntro
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
         }
 
         private void InitializeTvScreen()
@@ -261,7 +263,7 @@ namespace ALabs.LessonIntro
 
         private void StatesActivity_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new TransitionsActivity(mainWindow));
+            mainWindow.mainFrame.Navigate(new TransitionsActivity(mainWindow, authenticatedUser));
         }
 
         private void UpdateTvScreenText()

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ALabs.Database;
 
 namespace ALabs.LessonIntro
 {
@@ -23,6 +24,7 @@ namespace ALabs.LessonIntro
     /// </summary>
     public partial class Input : Page
     {
+        private readonly User authenticatedUser;
         private int currentIndex = 0;
         private int charIndex = 0;
 
@@ -55,19 +57,20 @@ namespace ALabs.LessonIntro
             // 8
             "Now that's finished, let's get this quiz over with, shall we?",
         };
-        public Input(MainWindow mainWindow)
+        public Input(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
             InitializeTvScreen();
             RunAnimationLoop();
+            this.authenticatedUser = authenticatedUser;
         }
 
         private bool endAnimation = false;
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
         }
 
         private void InitializeTvScreen()
@@ -256,7 +259,7 @@ namespace ALabs.LessonIntro
 
         private void StatesActivity_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new TransitionsActivity(mainWindow));
+            mainWindow.mainFrame.Navigate(new TransitionsActivity(mainWindow, authenticatedUser));
         }
 
         private void UpdateTvScreenText()
@@ -290,7 +293,7 @@ namespace ALabs.LessonIntro
         }
         private void InputActivityBtn_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new InputActivity(mainWindow));
+            mainWindow.mainFrame.Navigate(new InputActivity(mainWindow, authenticatedUser));
         }
     }
 }
