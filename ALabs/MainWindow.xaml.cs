@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ALabs.Database;
 
 namespace ALabs
 {
@@ -21,10 +22,11 @@ namespace ALabs
     /// </summary>
     public partial class MainWindow : Window
     {
+        private User authenticatedUser;
         public MainWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new UserLogin(this));
+            mainFrame.Navigate(new UserLogin(this, authenticatedUser));
         }
 
         public void CloseMainWindow()

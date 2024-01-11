@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ALabs.Database;
 
 namespace ALabs.LessonRegEx
 {
@@ -22,18 +23,88 @@ namespace ALabs.LessonRegEx
     public partial class ChallengeRegex : Page
     {
         private readonly MainWindow mainWindow;
+        private User authenticatedUser;
+        int challengeprogress;
         private int r1, l = 1;
         private String text = "";
         private Random random = new Random();
-        public ChallengeRegex(MainWindow mainWindow)
+        public ChallengeRegex(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
+            challengeprogress = authenticatedUser.challengeprogress;
+            if (challengeprogress >= 2)
+            {
+                myProgressBar.Value += 8.33;
+                btnl2.Visibility = Visibility.Visible;
+                btnl1.IsEnabled = false;
+            }
+            if (challengeprogress >= 3)
+            {
+                myProgressBar.Value += 8.33;
+                btnl3.Visibility = Visibility.Visible;
+                btnl2.IsEnabled = false;
+            }
+            if (challengeprogress >= 4)
+            {
+                myProgressBar.Value += 8.33;
+                btnl4.Visibility = Visibility.Visible;
+                btnl3.IsEnabled = false;
+            }
+            if (challengeprogress >= 5)
+            {
+                myProgressBar.Value += 8.33;
+                btnl5.Visibility = Visibility.Visible;
+                btnl4.IsEnabled = false;
+            }
+            if (challengeprogress >= 6)
+            {
+                myProgressBar.Value += 8.33;
+                btnl6.Visibility = Visibility.Visible;
+                btnl5.IsEnabled = false;
+            }
+            if (challengeprogress >= 7)
+            {
+                myProgressBar.Value += 8.33;
+                btnl7.Visibility = Visibility.Visible;
+                btnl6.IsEnabled = false;
+            }
+            if (challengeprogress >= 8)
+            {
+                myProgressBar.Value += 8.33;
+                btnl8.Visibility = Visibility.Visible;
+                btnl7.IsEnabled = false;
+            }
+            if (challengeprogress >= 9)
+            {
+                myProgressBar.Value += 8.33;
+                btnl9.Visibility = Visibility.Visible;
+                btnl8.IsEnabled = false;
+            }
+            if (challengeprogress >= 10)
+            {
+                myProgressBar.Value += 8.33;
+                btnl10.Visibility = Visibility.Visible;
+                btnl9.IsEnabled = false;
+            }
+            if (challengeprogress >= 11)
+            {
+                myProgressBar.Value += 8.33;
+                btnl11.Visibility = Visibility.Visible;
+                btnl10.IsEnabled = false;
+            }
+            if (challengeprogress >= 12)
+            {
+                myProgressBar.Value += 8.33;
+                btnl12.Visibility = Visibility.Visible;
+                btnl11.IsEnabled = false;
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new PlayPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new PlayPage(mainWindow, authenticatedUser));
         }
 
         private void btnCheck_Click(object sender, RoutedEventArgs e)
@@ -55,36 +126,255 @@ namespace ALabs.LessonRegEx
                     {
                         case 1:
                             btnl2.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 2)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 2;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 2:
                             btnl3.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 3)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 3;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 3:
                             btnl4.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 3)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 3;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 4:
                             btnl5.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 4)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 4;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 5:
                             btnl6.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 5)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 5;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 6:
                             btnl7.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 6)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 6;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 7:
                             btnl8.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 7)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 7;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 8:
                             btnl9.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 8)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 8;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 9:
                             btnl10.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 9)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 9;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 10:
                             btnl11.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 10)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 10;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                         case 11:
                             btnl12.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 11)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 11;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
+                            break;
+                        case 12:
+                            btnl12.Visibility = Visibility.Visible;
+                            using (UserDataContext context = new UserDataContext())
+                            {
+                                // Retrieve the user from the database
+                                User userToUpdate = context.Users.FirstOrDefault(user => user.Id == authenticatedUser.Id);
+
+                                if (userToUpdate != null && authenticatedUser.challengeprogress < 12)
+                                {
+                                    // Update the challengeprogress property
+                                    userToUpdate.challengeprogress = 12;
+
+                                    // Save changes to the database
+                                    context.SaveChanges();
+
+                                    // Update the authenticatedUser in memory to reflect the changes
+                                    authenticatedUser.challengeprogress = userToUpdate.challengeprogress;
+
+                                }
+                            }
                             break;
                     }
                 } else
@@ -112,6 +402,7 @@ namespace ALabs.LessonRegEx
                         return true;
                     }
                 }
+
             }
             else if (l == 2)
             {

@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ALabs.Database;
 
 namespace ALabs.LessonIntro
 {
@@ -25,30 +26,31 @@ namespace ALabs.LessonIntro
     public partial class Lesson1Page : Page
     {
         private readonly MainWindow mainWindow;
-        public Lesson1Page(MainWindow mainWindow)
+        private User authenticatedUser;
+        public Lesson1Page(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            
+            this.authenticatedUser = authenticatedUser;
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow, authenticatedUser));
         }
 
         private void States_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new States(mainWindow));
+            mainWindow.mainFrame.Navigate(new States(mainWindow, authenticatedUser));
         }
 
         private void Transitions_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Transitions(mainWindow));
+            mainWindow.mainFrame.Navigate(new Transitions(mainWindow, authenticatedUser));
         }
 
         private void Inputs_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Input(mainWindow));
+            mainWindow.mainFrame.Navigate(new Input(mainWindow, authenticatedUser));
         }
 
         private void IntroductionQuiz_Click(object sender, RoutedEventArgs e)
