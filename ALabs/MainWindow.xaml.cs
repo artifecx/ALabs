@@ -24,7 +24,7 @@ namespace ALabs
         public MainWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new MainPage(this));
+            mainFrame.Navigate(new UserLogin(this));
         }
 
         public void CloseMainWindow()

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ALabs.Database;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,10 @@ namespace ALabs
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            DatabaseFacade facade = new DatabaseFacade(new UserDataContext());
+            facade.EnsureCreated();
+        }
     }
 }
