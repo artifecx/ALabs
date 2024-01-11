@@ -34,13 +34,12 @@
                 <TextBlock VerticalAlignment="Center" Margin="100,0,0,0" Text="❤" FontSize="20" Foreground="Red" Name="Heart4"/>
             </Grid>
             <StackPanel Width="300" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Button Content="1. Non-deterministic Finite Automata" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn1Click" Name="btn1" IsEnabled="True"/>
-                <Button Content="2. Concatenation" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn2Click" Name="btn2" IsEnabled="False"/>
-                <Button Content="3. Kleene Star" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn3Click" Name="btn3" IsEnabled="False"/>
-                <Button Content="4. Union" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn4Click" Name="btn4" IsEnabled="False"/>
-                <Button Content="5. Epsilon (e) symbol" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn5Click" Name="btn5" IsEnabled="False"/>
-                <Button Content="6. NFA Construction from a Regular Expression" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btn6Click" Name="btn6" IsEnabled="False"/>
-                <Button Content="7. Practice" HorizontalContentAlignment="Left" Padding="20,0,0,0" Height="50" Click="btn7Click" Name="btn7" IsEnabled="False"/>
+                <Button Content="1. Non-deterministic Finite Automata" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn1" IsEnabled="True"/>
+                <Button Content="2. Concatenation" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn2" IsEnabled="False"/>
+                <Button Content="3. Union" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn3" IsEnabled="False"/>
+                <Button Content="4. Kleene Star" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn4" IsEnabled="False"/>
+                <Button Content="5. e symbol" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn5" IsEnabled="False"/>
+                <Button Content="6. NFA Construction from a Regular Expression" HorizontalContentAlignment="Left" Padding="20,0,0,0" Margin="0,0,0,20" Height="50" Click="btnChapterClick" Name="btn6" IsEnabled="False"/>
             </StackPanel>
             
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="350,40,0,0" Width="1400" Height="750" Name="panel" Grid.RowSpan="4" Grid.Row="1">

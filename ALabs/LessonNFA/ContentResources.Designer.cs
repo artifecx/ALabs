@@ -135,11 +135,425 @@ namespace ALabs.LessonNFA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to True or False: Based on your observation from the previous comparisons between an NFA and a DFA, do you need to have a dead state when constructing an NFA?.
+        ///   Looks up a localized string similar to True or False: Based on your observation from the previous comparisons between an NFA and a DFA, you don&apos;t need to have a dead state when constructing an NFA..
         /// </summary>
         internal static string C1Q1 {
             get {
                 return ResourceManager.GetString("C1Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are correct! The grouping symbol &quot;()&quot; only matters if there are other operations inside the group, otherwise it is just plain concatenation. As with our example, &quot;(aba)bab&quot; is basically just &quot;ababab&quot;..
+        /// </summary>
+        internal static string C2A1 {
+            get {
+                return ResourceManager.GetString("C2A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. While this is a valid way to construct the NFA, it is generally better to do it the other way, which uses one less state and fully utilizes an NFA&apos;s ability to process an entire input string instead of a single input symbol on a given transition..
+        /// </summary>
+        internal static string C2A2 {
+            get {
+                return ResourceManager.GetString("C2A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C2E1 {
+            get {
+                object obj = ResourceManager.GetObject("C2E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C2IAQ1 {
+            get {
+                object obj = ResourceManager.GetObject("C2IAQ1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C2IBQ1 {
+            get {
+                object obj = ResourceManager.GetObject("C2IBQ1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When it comes to constructing NFAs, it is important to understand the many operations to produce regular languages. Up first is concatenation!.
+        /// </summary>
+        internal static string C2P1 {
+            get {
+                return ResourceManager.GetString("C2P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It refers to the process of combining two languages by forming all possible combinations of strings from the first language followed by strings from the second language..
+        /// </summary>
+        internal static string C2P2 {
+            get {
+                return ResourceManager.GetString("C2P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you can recall, we already saw an example of concatenation in the form of ends with aa! Concatenation is as simple as putting symbols next to each other then transitioning them all together as one string to the next state..
+        /// </summary>
+        internal static string C2P3 {
+            get {
+                return ResourceManager.GetString("C2P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Below is an example of an NFA that only accepts the regular language &quot;a&quot; and the one next to it &quot;ab&quot;..
+        /// </summary>
+        internal static string C2P4 {
+            get {
+                return ResourceManager.GetString("C2P4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Concatenation is as easy as that! Now let us get to this chapter&apos;s question....
+        /// </summary>
+        internal static string C2P5 {
+            get {
+                return ResourceManager.GetString("C2P5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick one: Which one is the most correct way to construct an NFA that accepts the regular language &quot;(aba)bab&quot;.
+        /// </summary>
+        internal static string C2Q1 {
+            get {
+                return ResourceManager.GetString("C2Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct! Since we are talking about a Union, otherwise an OR operation, the minimum output of &quot;a+b&quot; would be either &quot;a&quot; or &quot;b&quot;, not ab..
+        /// </summary>
+        internal static string C3A1 {
+            get {
+                return ResourceManager.GetString("C3A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. A Union is not putting symbols next to each other since that would be concatenation, it is an operation that promotes exclusivity, the output would either be &quot;a&quot; or &quot;b&quot;, not both such as &quot;ab&quot;..
+        /// </summary>
+        internal static string C3A2 {
+            get {
+                return ResourceManager.GetString("C3A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C3E1 {
+            get {
+                object obj = ResourceManager.GetObject("C3E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The next operation we&apos;ll be learning about is Union! Denoted by the symbol &quot;+&quot; which means an &quot;or&quot;, and can&apos;t be both..
+        /// </summary>
+        internal static string C3P1 {
+            get {
+                return ResourceManager.GetString("C3P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The union of two languages is the set of strings that belong to either of the original languages..
+        /// </summary>
+        internal static string C3P2 {
+            get {
+                return ResourceManager.GetString("C3P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heres how Union would look like in NFA..
+        /// </summary>
+        internal static string C3P3 {
+            get {
+                return ResourceManager.GetString("C3P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This chapter&apos;s question is now ready for you....
+        /// </summary>
+        internal static string C3P4 {
+            get {
+                return ResourceManager.GetString("C3P4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True or False: The minimum output of &quot;a+b&quot; is ab..
+        /// </summary>
+        internal static string C3Q1 {
+            get {
+                return ResourceManager.GetString("C3Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct! It is not the same because the Kleene star symbol will only be applied to the one at its left when there is no grouping. The minimal output of &quot;aa*&quot; would be &quot;a&quot;, while for &quot;(aa)*&quot; it is empty..
+        /// </summary>
+        internal static string C4A1 {
+            get {
+                return ResourceManager.GetString("C4A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. While they do look similar, it is important to note that without a grouping, the Kleene star will only be applied to the one to its immediate left. The minimal output of &quot;aa*&quot; would be &quot;a&quot;, while for &quot;(aa)*&quot; it is empty..
+        /// </summary>
+        internal static string C4A2 {
+            get {
+                return ResourceManager.GetString("C4A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C4E1 {
+            get {
+                object obj = ResourceManager.GetObject("C4E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C4E2 {
+            get {
+                object obj = ResourceManager.GetObject("C4E2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up next on the list is the Kleene star operation, denoted by &quot;*&quot;..
+        /// </summary>
+        internal static string C4P1 {
+            get {
+                return ResourceManager.GetString("C4P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When dealing with NFAs, the Kleene star operation allows for the repetition of zero or more occurrences of a given language..
+        /// </summary>
+        internal static string C4P2 {
+            get {
+                return ResourceManager.GetString("C4P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here&apos;s how Kleene star looks in an NFA..
+        /// </summary>
+        internal static string C4P3 {
+            get {
+                return ResourceManager.GetString("C4P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note than when grouping a Union operation together and putting a Kleene star outside it will lead to the NFA looking like the ones below..
+        /// </summary>
+        internal static string C4P4 {
+            get {
+                return ResourceManager.GetString("C4P4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now that we got that covered, time for this chapter&apos;s question....
+        /// </summary>
+        internal static string C4P5 {
+            get {
+                return ResourceManager.GetString("C4P5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True or False: aa* is the same as (aa)*.
+        /// </summary>
+        internal static string C4Q1 {
+            get {
+                return ResourceManager.GetString("C4Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct! Epsilon transitions mean it will not read any input and allows transitions to another state without conditions..
+        /// </summary>
+        internal static string C5A1 {
+            get {
+                return ResourceManager.GetString("C5A1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect. The epsilon transition means that the given input will not matter and will keep moving to the next state until it reaches a state that doesn&apos;t transition on e..
+        /// </summary>
+        internal static string C5A2 {
+            get {
+                return ResourceManager.GetString("C5A2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C5E1 {
+            get {
+                object obj = ResourceManager.GetObject("C5E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C5E2 {
+            get {
+                object obj = ResourceManager.GetObject("C5E2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now we get to learn about something new! The epsilon &quot;ε&quot; symbol..
+        /// </summary>
+        internal static string C5P1 {
+            get {
+                return ResourceManager.GetString("C5P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In the context of an NFA, the symbol &quot;ε&quot; or &quot;e&quot; represents an epsilon transition or a transition that occurs without consuming any input symbol..
+        /// </summary>
+        internal static string C5P2 {
+            get {
+                return ResourceManager.GetString("C5P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This distinctive feature of NFAs provide additional flexibility in modeling the behavior of the automaton..
+        /// </summary>
+        internal static string C5P3 {
+            get {
+                return ResourceManager.GetString("C5P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Epsilon transitions are often used in the construction of NFAs for concatenation and closure operations. For example, in concatenation, epsilon transitions can be used to move from the end of one string to the beginning of another without consuming any symbols..
+        /// </summary>
+        internal static string C5P4 {
+            get {
+                return ResourceManager.GetString("C5P4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now that we know what an e symbol is, we&apos;ll revisit the earlier examples of Union in an NFA and rewrite them in a generally much better way..
+        /// </summary>
+        internal static string C5P5 {
+            get {
+                return ResourceManager.GetString("C5P5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time to take this chapter&apos;s question....
+        /// </summary>
+        internal static string C5P6 {
+            get {
+                return ResourceManager.GetString("C5P6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True or False: Epsilon transition &quot;ε&quot; or &quot;e&quot; in an NFA can be used to transition to another state without limits by not requiring any input symbols..
+        /// </summary>
+        internal static string C5Q1 {
+            get {
+                return ResourceManager.GetString("C5Q1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] C6E1 {
+            get {
+                object obj = ResourceManager.GetObject("C6E1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now that we have all the necessary operations covered in constructing NFAs, we&apos;ll be learning about how to construct NFAs when given a Regular Expression..
+        /// </summary>
+        internal static string C6P1 {
+            get {
+                return ResourceManager.GetString("C6P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since we already know what each operation looks like in an NFA, it is only a matter of combining the operations present in the regular expression to construct the NFA..
+        /// </summary>
+        internal static string C6P2 {
+            get {
+                return ResourceManager.GetString("C6P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here are some examples..
+        /// </summary>
+        internal static string C6P3 {
+            get {
+                return ResourceManager.GetString("C6P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hope you got all that, you should now be ready to successfully tackle this lesson&apos;s challenges....
+        /// </summary>
+        internal static string C6P4 {
+            get {
+                return ResourceManager.GetString("C6P4", resourceCulture);
             }
         }
     }
