@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ALabs.Database;
 
 namespace ALabs.LessonNFA
 {
@@ -23,11 +24,13 @@ namespace ALabs.LessonNFA
     public partial class Lesson3Page : Page
     {
         private readonly MainWindow mainWindow;
+        private User authenticatedUser;
 
-        public Lesson3Page(MainWindow mainWindow)
+        public Lesson3Page(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
 
             btnPrev.IsEnabled = false;
             panelContent.Children.Clear();
@@ -36,7 +39,7 @@ namespace ALabs.LessonNFA
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow, authenticatedUser));
         }
 
         private void btn1Click(object sender, RoutedEventArgs e)

@@ -22,6 +22,7 @@ namespace ALabs
     public partial class UserRegister : Page
     {
         private readonly MainWindow mainWindow;
+        private User authenticatedUser;
         public UserRegister(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -69,7 +70,7 @@ namespace ALabs
 
         private void BackToLoginButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new UserLogin(mainWindow));
+            mainWindow.mainFrame.Navigate(new UserLogin(mainWindow, authenticatedUser));
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -105,7 +106,7 @@ namespace ALabs
                 context.SaveChanges();
 
                 MessageBox.Show("Registration successful!");
-                mainWindow.mainFrame.Navigate(new UserLogin(mainWindow));
+                mainWindow.mainFrame.Navigate(new UserLogin(mainWindow, authenticatedUser));
             }
         }
     }

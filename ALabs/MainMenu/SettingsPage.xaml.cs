@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ALabs.Database;
 
 namespace ALabs
 {
@@ -21,17 +22,19 @@ namespace ALabs
     public partial class SettingsPage : Page
     {
         private readonly MainWindow mainWindow;
+        private User authenticatedUser;
 
-        public SettingsPage(MainWindow mainWindow)
+        public SettingsPage(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             // Go back to MainPage
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow, authenticatedUser));
         }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ALabs.Database;
 
 namespace ALabs.LessonIntro
 {
@@ -24,7 +25,7 @@ namespace ALabs.LessonIntro
     public partial class TransitionsActivity : Page
     {
         private readonly MainWindow mainWindow;
-
+        private User authenticatedUser;
         // This code is strictly and lazily made for this True/False quiz game.
         // You can add as many questions as you want. Provided that you manually set the paths for the animations and assign the correct and incorrect answers
 
@@ -56,10 +57,11 @@ namespace ALabs.LessonIntro
 
         // User Score
         private int userScore = 0;
-        public TransitionsActivity(MainWindow mainWindow)
+        public TransitionsActivity(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
             True1.Click += True1_Click;
             False1.Click += False1_Click;
             True2.Click += True2_Click;
@@ -506,7 +508,7 @@ namespace ALabs.LessonIntro
 
         private void BackToDashboard_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
         }
 
         private void GoToNextLesson_Click(object sender, RoutedEventArgs e)

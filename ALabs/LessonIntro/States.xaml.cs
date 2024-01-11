@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using ALabs.Database;
 
 namespace ALabs.LessonIntro
 {
@@ -66,19 +67,21 @@ namespace ALabs.LessonIntro
             "Now that we have all of that out of the way,\n"
             + "Let's have you challenge yourself to some quizzes!"
         };
+        private User authenticatedUser;
 
-        
-        public States(MainWindow mainWindow)
+
+        public States(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
             InitializeTvScreen();
             RunAnimationLoop();
         }
         private bool endAnimation = false;
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow));
+            mainWindow.mainFrame.Navigate(new Lesson1Page(mainWindow, authenticatedUser));
         }
 
         private void InitializeTvScreen()

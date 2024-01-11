@@ -21,11 +21,13 @@ namespace ALabs
     /// </summary>
     public partial class UserLogin : Page
     {
-        private readonly MainWindow mainWindow;
-        public UserLogin(MainWindow mainWindow)
+        private readonly MainWindow mainWindow; 
+        private readonly User authenticatedUser;
+        public UserLogin(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
         }
 
         private void UsernameTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -62,10 +64,14 @@ namespace ALabs
             using (UserDataContext context = new UserDataContext())
             {
                 bool userfound = context.Users.Any(user => user.Username == username && user.Password == password);
+                User authenticatedUser = context.Users.FirstOrDefault(user => user.Username == username && user.Password == password);
+
+                
+                
 
                 if (userfound)
-                {
-                    GrantAccess();
+                { 
+                    GrantAccess(authenticatedUser);
                 }
                 else
                 {
@@ -85,9 +91,9 @@ namespace ALabs
         {
             mainWindow.mainFrame.Navigate(new UserRegister(mainWindow));
         }
-        public void GrantAccess()
+        public void GrantAccess(User authenticatedUser)
         {
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow, authenticatedUser));
         }
     }
 }

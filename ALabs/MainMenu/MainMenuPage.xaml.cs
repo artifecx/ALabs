@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ALabs.Database;
 
 namespace ALabs
 {
@@ -21,11 +22,14 @@ namespace ALabs
     public partial class MainPage : Page
     {
         private readonly MainWindow mainWindow;
+        private readonly User authenticatedUser;
 
-        public MainPage(MainWindow mainWindow)
+        public MainPage(MainWindow mainWindow, User authenticatedUser)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.authenticatedUser = authenticatedUser;
+            MessageBox.Show(authenticatedUser.Name.ToString());
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
@@ -36,17 +40,17 @@ namespace ALabs
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new SettingsPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new SettingsPage(mainWindow, authenticatedUser));
         }
 
         private void LessonsButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new LessonsPage(mainWindow, authenticatedUser));
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new PlayPage(mainWindow));
+            mainWindow.mainFrame.Navigate(new PlayPage(mainWindow, authenticatedUser));
         }
     }
 }
