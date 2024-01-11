@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ALabs.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,12 +56,38 @@ namespace ALabs
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
+            var username = UsernameTextBox.Text;
+            var password = PasswordBox.Password;
+
+            using (UserDataContext context = new UserDataContext())
+            {
+                bool userfound = context.Users.Any(user => user.Username == username && user.Password == password);
+
+                if (userfound)
+                {
+                    GrantAccess();
+                }
+                else
+                {
+                    MessageBox.Show("User not Found");
+                }
+
+            }
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.");
+                return;
+            }
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.mainFrame.Navigate(new UserRegister(mainWindow));
+        }
+        public void GrantAccess()
+        {
+            mainWindow.mainFrame.Navigate(new MainPage(mainWindow));
         }
     }
 }
