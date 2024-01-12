@@ -9,7 +9,31 @@
       Title="InputActivity">
 
     <Grid Focusable="True" x:Name="myGrid">
+        <Border CornerRadius="20"
+                HorizontalAlignment="Left"
+                Margin="50,90,0,10"
+                Background="#F5F5F5"
+                BorderThickness="2"
+                Width="200">
+        </Border>
 
+        <Border CornerRadius="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,10"
+                Background="#F5F5F5"
+                BorderThickness="2"
+                Width="1820"
+                Height="200">
+        </Border>
+
+        <Border CornerRadius="20"
+                HorizontalAlignment="Right"
+                Margin="0,90,50,10"
+                Background="#F5F5F5"
+                BorderThickness="2"
+                Width="200">
+        </Border>
         <TextBlock x:Name="userScoreText" FontSize="30" Text="Score: 0" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,57,0,0"/>
         <TextBlock x:Name="TrueOrFalse" Text="True or False!" FontSize="30" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,160,0,0"/>
 
@@ -46,8 +70,6 @@
             <Line x:Name="OneToTwo" X1="150" Y1="930" X2="960" Y2="930" Stroke="Black" StrokeThickness="2"/>
             <Line x:Name="TwoToThree" X1="960" Y1="930" X2="1770" Y2="930" Stroke="Black" StrokeThickness="2"/>
             <Line x:Name="ThreeToEnd" X1="1770" Y1="185" X2="1770" Y2="930" Stroke="Black" StrokeThickness="2"/>
-
-
 
             <!-- Object to be animated -->
             <Ellipse x:Name="animatedObject" Width="20" Height="20" Fill="Blue" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="140" Canvas.Top="175" />

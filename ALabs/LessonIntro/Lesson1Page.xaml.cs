@@ -75,7 +75,7 @@ namespace ALabs.LessonIntro
 
         private void IntroductionQuiz_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.mainFrame.Navigate("");
+            mainWindow.mainFrame.Navigate(new IntroductionQuiz(mainWindow, authenticatedUser));
         }
 
         private void ATInfo_Click(object sender, RoutedEventArgs e)
@@ -115,17 +115,17 @@ namespace ALabs.LessonIntro
 
         private void States_MouseEnter(object sender, MouseEventArgs e)
         {
-            tbL.Text = "This is the text for Tutorial when hovering over States.";
+            tbL.Text = "In this lesson, you will learn about States!";
         }
 
         private void Transitions_MouseEnter(object sender, MouseEventArgs e)
         {
-            tbL.Text = "This is the text for Tutorial when hovering over Transitions.";
+            tbL.Text = "In this lesson, you will learn about how Transitions work!";
         }
 
         private void Inputs_MouseEnter(object sender, MouseEventArgs e)
         {
-            tbL.Text = "This is the text for Tutorial when hovering over Inputs.";
+            tbL.Text = "In this lesson, you will learn about how Inputs move through states!";
         }
 
         private void IntroductionQuiz_MouseEnter(object sender, MouseEventArgs e)
