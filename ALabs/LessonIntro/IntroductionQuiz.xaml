@@ -9,6 +9,31 @@
       Title="IntroductionQuiz">
 
     <Grid Focusable="True" x:Name="myGrid">
+        <Border CornerRadius="20"
+        HorizontalAlignment="Left"
+        Margin="50,90,0,10"
+        Background="#F5F5F5"
+        BorderThickness="2"
+        Width="200">
+        </Border>
+
+        <Border CornerRadius="20"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Bottom"
+        Margin="0,0,0,10"
+        Background="#F5F5F5"
+        BorderThickness="2"
+        Width="1820"
+        Height="200">
+        </Border>
+
+        <Border CornerRadius="20"
+        HorizontalAlignment="Right"
+        Margin="0,90,50,10"
+        Background="#F5F5F5"
+        BorderThickness="2"
+        Width="200">
+        </Border>
 
         <TextBlock x:Name="userScoreText" FontSize="30" Text="Score: 0" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,57,0,0"/>
         <TextBlock x:Name="TrueOrFalse" Text="True or False!" FontSize="30" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,160,0,0"/>
@@ -24,6 +49,34 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
             <Button x:Name="True3" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True3_Click"/>
             <Button x:Name="False3" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False3_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True4" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True4_Click"/>
+            <Button x:Name="False4" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False4_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True5" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True5_Click"/>
+            <Button x:Name="False5" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False5_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True6" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True6_Click"/>
+            <Button x:Name="False6" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False6_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True7" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True7_Click"/>
+            <Button x:Name="False7" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False7_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True8" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True8_Click"/>
+            <Button x:Name="False8" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False8_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True9" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True9_Click"/>
+            <Button x:Name="False9" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False9_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
+            <Button x:Name="True10" Content="True" Width="100" Height="50" Margin="10" Focusable="False" Click="True10_Click"/>
+            <Button x:Name="False10" Content="False" Width="100" Height="50" Margin="10" Focusable="False" Click="False10_Click"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="350" >
             <Button x:Name="BackToDashboard" Content="Back to Dashboard" Width="130" Height="50" Margin="10" Focusable="False" Click="BackToDashboard_Click" Visibility="Collapsed"/>
@@ -57,9 +110,17 @@
             <Ellipse x:Name="endState" Width="100" Height="100" Fill="Red" Canvas.Left="1720" Canvas.Top="145" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
             <!--Finite States-->
-            <Ellipse x:Name="finiteState1" Width="100" Height="100" Fill="Black" Canvas.Left="100" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Ellipse x:Name="finiteState2" Width="100" Height="100" Fill="Black" Canvas.Left="1720" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Ellipse x:Name="finiteState3" Width="100" Height="100" Fill="Black" Canvas.Left="910" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState1" Width="100" Height="100" Fill="Black" Canvas.Left="100" Canvas.Top="366" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState2" Width="100" Height="100" Fill="Black" Canvas.Left="100" Canvas.Top="621" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState3" Width="100" Height="100" Fill="Black" Canvas.Left="100" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState4" Width="100" Height="100" Fill="Black" Canvas.Left="380" Canvas.Top="880" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Ellipse x:Name="finiteState5" Width="100" Height="100" Fill="Black" Canvas.Left="715" Canvas.Top="880" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Ellipse x:Name="finiteState6" Width="100" Height="100" Fill="Black" Canvas.Left="1042" Canvas.Top="880" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Ellipse x:Name="finiteState7" Width="100" Height="100" Fill="Black" Canvas.Left="1384" Canvas.Top="880" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Ellipse x:Name="finiteState8" Width="100" Height="100" Fill="Black" Canvas.Left="1720" Canvas.Top="880" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState9" Width="100" Height="100" Fill="Black" Canvas.Left="1720" Canvas.Top="621" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Ellipse x:Name="finiteState10" Width="100" Height="100" Fill="Black" Canvas.Left="1720" Canvas.Top="366" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
         </Canvas>
     </Grid>
 </Page>

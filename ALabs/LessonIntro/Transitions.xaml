@@ -9,7 +9,32 @@
       Title="Transitions">
 
     <Grid Focusable="True" x:Name="myGrid">
-        <TextBlock Text="Transitions!" FontSize="30" HorizontalAlignment="Center" Margin="0,250,0,760"/>
+        <Border CornerRadius="20"
+        HorizontalAlignment="Left"
+        Margin="50,90,0,10"
+        Background="#F5F5F5"
+        BorderThickness="2"
+        Width="200">
+        </Border>
+
+        <Border CornerRadius="20"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Bottom"
+        Margin="0,0,0,10"
+        Background="#F5F5F5"
+        BorderThickness="2"
+        Width="1820"
+        Height="200">
+        </Border>
+
+        <Border CornerRadius="20"
+                HorizontalAlignment="Right"
+                Margin="0,90,50,10"
+                Background="#F5F5F5"
+                BorderThickness="2"
+                Width="200">
+        </Border>
+        <TextBlock Text="Transitions!" FontSize="30" HorizontalAlignment="Center" Margin="0,160,0,760"/>
         <Button Content="Back" Width="100" Height="50" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Focusable="False"/>
 
         <Canvas x:Name="linesCanvas" Focusable="True">

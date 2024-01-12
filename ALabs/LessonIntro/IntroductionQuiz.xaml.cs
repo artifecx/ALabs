@@ -37,8 +37,26 @@ namespace ALabs.LessonIntro
             // 1
             new Question("Input is the information or data provided to a system by which the automaton reads and accepts when the input is accepted by the predetermined states. ", true),
             // 2
-            new Question("An Automaton can function without an input.", false),
-            new Question("...",false),
+            new Question("An Automaton can function without an input.", true),
+            // 3
+            new Question("Inputs are the symbols or signals that an automation receives, triggering transitions between states and influencing its behavior.", true),
+            // 4
+            new Question("Input is the information or data provided to a system by which the automaton reads and accepts when the input is accepted by the predetermined states. ", true),
+            // 5
+            new Question("An Automaton can function without an input.", true),
+            // 6
+            new Question("Inputs are the symbols or signals that an automation receives, triggering transitions between states and influencing its behavior.", true),
+            // 7
+            new Question("Input is the information or data provided to a system by which the automaton reads and accepts when the input is accepted by the predetermined states. ", true),
+            // 8
+            new Question("An Automaton can function without an input.", true),
+            // 9
+            new Question("Inputs are the symbols or signals that an automation receives, triggering transitions between states and influencing its behavior.", true),
+            // 10
+            new Question("Input is the information or data provided to a system by which the automaton reads and accepts when the input is accepted by the predetermined states. ", true),
+            // 11
+            new Question("...", false),
+
 
         };
 
@@ -69,6 +87,20 @@ namespace ALabs.LessonIntro
             False2.Click += False2_Click;
             True3.Click += True3_Click;
             False3.Click += False3_Click;
+            True4.Click += True4_Click;
+            False4.Click += False4_Click;
+            True5.Click += True5_Click;
+            False5.Click += False5_Click;
+            True6.Click += True6_Click;
+            False6.Click += False6_Click;
+            True7.Click += True7_Click;
+            False7.Click += False7_Click;
+            True8.Click += True8_Click;
+            False8.Click += False8_Click;
+            True9.Click += True9_Click;
+            False9.Click += False9_Click;
+            True10.Click += True10_Click;
+            False10.Click += False10_Click;
             BackToDashboard.Click += BackToDashboard_Click;
 
             InitializeAnimation();
@@ -89,18 +121,46 @@ namespace ALabs.LessonIntro
             False2.IsEnabled = false;
             True3.IsEnabled = false;
             False3.IsEnabled = false;
+            True4.IsEnabled = false;
+            False4.IsEnabled = false;
+            True5.IsEnabled = false;
+            False5.IsEnabled = false;
+            True6.IsEnabled = false;
+            False6.IsEnabled = false;
+            True7.IsEnabled = false;
+            False7.IsEnabled = false;
+            True8.IsEnabled = false;
+            False8.IsEnabled = false;
+            True9.IsEnabled = false;
+            False9.IsEnabled = false;
+            True10.IsEnabled = false;
+            False10.IsEnabled = false;
 
             True2.Visibility = Visibility.Collapsed;
             False2.Visibility = Visibility.Collapsed;
             True3.Visibility = Visibility.Collapsed;
             False3.Visibility = Visibility.Collapsed;
+            True4.Visibility = Visibility.Collapsed;
+            False4.Visibility = Visibility.Collapsed;
+            True5.Visibility = Visibility.Collapsed;
+            False5.Visibility = Visibility.Collapsed;
+            True6.Visibility = Visibility.Collapsed;
+            False6.Visibility = Visibility.Collapsed;
+            True7.Visibility = Visibility.Collapsed;
+            False7.Visibility = Visibility.Collapsed;
+            True8.Visibility = Visibility.Collapsed;
+            False8.Visibility = Visibility.Collapsed;
+            True9.Visibility = Visibility.Collapsed;
+            False9.Visibility = Visibility.Collapsed;
+            True10.Visibility = Visibility.Collapsed;
+            False10.Visibility = Visibility.Collapsed;
             BackToDashboard.Visibility = Visibility.Collapsed;
 
 
             DoubleAnimation animation1 = new DoubleAnimation();
             animation1.From = 185;
-            animation1.To = 920;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.To = 366;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
@@ -111,7 +171,7 @@ namespace ALabs.LessonIntro
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetTop(animatedObject) == 920)
+                if (Canvas.GetTop(animatedObject) == 366)
                 {
                     dotTimer.Stop();
                     DisplayCurrentQuestionOnTvScreen();
@@ -142,20 +202,20 @@ namespace ALabs.LessonIntro
             False2.IsEnabled = false;
 
             DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 150;
-            animation1.To = 960;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.From = 366;
+            animation1.To = 621;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
 
             Storyboard.SetTarget(animation1, animatedObject);
-            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
 
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetLeft(animatedObject) == 960)
+                if (Canvas.GetTop(animatedObject) == 621)
                 {
 
                     dotTimer.Stop();
@@ -191,21 +251,22 @@ namespace ALabs.LessonIntro
             False2.IsEnabled = false;
 
             DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 150;
-            animation1.To = 960;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.From = 366;
+            animation1.To = 621;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
 
             Storyboard.SetTarget(animation1, animatedObject);
-            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
 
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetLeft(animatedObject) == 960)
+                if (Canvas.GetTop(animatedObject) == 621)
                 {
+                    // Answer is True
                     userScore = userScore + 1;
                     UpdateUserScoreText();
                     dotTimer.Stop();
@@ -239,20 +300,20 @@ namespace ALabs.LessonIntro
             False3.IsEnabled = false;
 
             DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 960;
-            animation1.To = 1760;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.From = 621;
+            animation1.To = 920;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
 
             Storyboard.SetTarget(animation1, animatedObject);
-            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
 
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetLeft(animatedObject) == 1760)
+                if (Canvas.GetTop(animatedObject) == 920)
                 {
                     UpdateUserScoreText();
                     dotTimer.Stop();
@@ -286,21 +347,22 @@ namespace ALabs.LessonIntro
             False3.IsEnabled = false;
 
             DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 960;
-            animation1.To = 1760;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.From = 621;
+            animation1.To = 920;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
 
             Storyboard.SetTarget(animation1, animatedObject);
-            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
 
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetLeft(animatedObject) == 1760)
+                if (Canvas.GetTop(animatedObject) == 920)
                 {
+                    // Answer is True
                     userScore = userScore + 1;
                     UpdateUserScoreText();
                     dotTimer.Stop();
@@ -325,50 +387,41 @@ namespace ALabs.LessonIntro
             isAnimationInProgress = true;
             Debug.WriteLine(currentQuestionIndex + "dqweqwe");
             MoveToNextQuestion();
+            True3.Visibility = Visibility.Collapsed;
+            False3.Visibility = Visibility.Collapsed;
+            True4.Visibility = Visibility.Visible;
+            False4.Visibility = Visibility.Visible;
+            True3.IsEnabled = false;
+            False3.IsEnabled = false;
+            True4.IsEnabled = false;
+            False4.IsEnabled = false;
 
             DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 900;
-            animation1.To = 185;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.From = 150;
+            animation1.To = 380;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
 
             Storyboard.SetTarget(animation1, animatedObject);
-            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
 
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetTop(animatedObject) == 185)
+                if (Canvas.GetLeft(animatedObject) == 380)
                 {
+                    // Answer is False
                     userScore = userScore + 1;
                     UpdateUserScoreText();
                     dotTimer.Stop();
                     EndStateReached = true;
                     isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True4.IsEnabled = true;
+                    False4.IsEnabled = true;
 
-                    if (userScore == 1)
-                    {
-                        tvScreen.Text = $"Better luck next time!\n Your Score: {userScore}";
-                    }
-                    else if (userScore == 2)
-                    {
-                        tvScreen.Text = $"You're almost there!\n Your Score: {userScore}";
-                    }
-                    else if (userScore == 3)
-                    {
-                        tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
-                    }
-                    BackToDashboard.Visibility = Visibility.Visible;
-
-                    True1.Visibility = Visibility.Collapsed;
-                    False1.Visibility = Visibility.Collapsed;
-                    True2.Visibility = Visibility.Collapsed;
-                    False2.Visibility = Visibility.Collapsed;
-                    True3.Visibility = Visibility.Collapsed;
-                    False3.Visibility = Visibility.Collapsed;
-                    BackToDashboard.Visibility = Visibility.Visible;
                 }
             };
 
@@ -381,6 +434,14 @@ namespace ALabs.LessonIntro
 
             if (isAnimationInProgress)
                 return;
+            True3.Visibility = Visibility.Collapsed;
+            False3.Visibility = Visibility.Collapsed;
+            True4.Visibility = Visibility.Visible;
+            False4.Visibility = Visibility.Visible;
+            True3.IsEnabled = false;
+            False3.IsEnabled = false;
+            True4.IsEnabled = false;
+            False4.IsEnabled = false;
 
             isAnimationInProgress = true;
             Debug.WriteLine(currentQuestionIndex + "dqweqwe");
@@ -388,9 +449,471 @@ namespace ALabs.LessonIntro
 
 
             DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 900;
-            animation1.To = 185;
-            animation1.Duration = TimeSpan.FromSeconds(3);
+            animation1.From = 150;
+            animation1.To = 380;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 380)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True4.IsEnabled = true;
+                    False4.IsEnabled = true;
+
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False4_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True4.Visibility = Visibility.Collapsed;
+            False4.Visibility = Visibility.Collapsed;
+            True5.Visibility = Visibility.Visible;
+            False5.Visibility = Visibility.Visible;
+            True4.IsEnabled = false;
+            False4.IsEnabled = false;
+            True5.IsEnabled = false;
+            False5.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 380;
+            animation1.To = 715;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 715)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True5.IsEnabled = true;
+                    False5.IsEnabled = true;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True4_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            True4.Visibility = Visibility.Collapsed;
+            False4.Visibility = Visibility.Collapsed;
+            True5.Visibility = Visibility.Visible;
+            False5.Visibility = Visibility.Visible;
+            True4.IsEnabled = false;
+            False4.IsEnabled = false;
+            True5.IsEnabled = false;
+            False5.IsEnabled = false;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 380;
+            animation1.To = 715;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 715)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True5.IsEnabled = true;
+                    False5.IsEnabled = true;
+
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False5_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True5.Visibility = Visibility.Collapsed;
+            False5.Visibility = Visibility.Collapsed;
+            True6.Visibility = Visibility.Visible;
+            False6.Visibility = Visibility.Visible;
+            True5.IsEnabled = false;
+            False5.IsEnabled = false;
+            True6.IsEnabled = false;
+            False6.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 715;
+            animation1.To = 1042;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1042)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True6.IsEnabled = true;
+                    False6.IsEnabled = true;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True5_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            True5.Visibility = Visibility.Collapsed;
+            False5.Visibility = Visibility.Collapsed;
+            True6.Visibility = Visibility.Visible;
+            False6.Visibility = Visibility.Visible;
+            True5.IsEnabled = false;
+            False5.IsEnabled = false;
+            True6.IsEnabled = false;
+            False6.IsEnabled = false;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 715;
+            animation1.To = 1042;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1042)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True6.IsEnabled = true;
+                    False6.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False6_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True6.Visibility = Visibility.Collapsed;
+            False6.Visibility = Visibility.Collapsed;
+            True7.Visibility = Visibility.Visible;
+            False7.Visibility = Visibility.Visible;
+            True6.IsEnabled = false;
+            False6.IsEnabled = false;
+            True7.IsEnabled = false;
+            False7.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 1042;
+            animation1.To = 1384;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1384)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True7.IsEnabled = true;
+                    False7.IsEnabled = true;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True6_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            True6.Visibility = Visibility.Collapsed;
+            False6.Visibility = Visibility.Collapsed;
+            True7.Visibility = Visibility.Visible;
+            False7.Visibility = Visibility.Visible;
+            True6.IsEnabled = false;
+            False6.IsEnabled = false;
+            True7.IsEnabled = false;
+            False7.IsEnabled = false;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 1042;
+            animation1.To = 1384;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1384)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True7.IsEnabled = true;
+                    False7.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False7_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True7.Visibility = Visibility.Collapsed;
+            False7.Visibility = Visibility.Collapsed;
+            True8.Visibility = Visibility.Visible;
+            False8.Visibility = Visibility.Visible;
+            True7.IsEnabled = false;
+            False7.IsEnabled = false;
+            True8.IsEnabled = false;
+            False8.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 1384;
+            animation1.To = 1760;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1760)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True8.IsEnabled = true;
+                    False8.IsEnabled = true;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True7_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            True7.Visibility = Visibility.Collapsed;
+            False7.Visibility = Visibility.Collapsed;
+            True8.Visibility = Visibility.Visible;
+            False8.Visibility = Visibility.Visible;
+            True7.IsEnabled = false;
+            False7.IsEnabled = false;
+            True8.IsEnabled = false;
+            False8.IsEnabled = false;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 1384;
+            animation1.To = 1760;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.LeftProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetLeft(animatedObject) == 1760)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True8.IsEnabled = true;
+                    False8.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False8_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True8.Visibility = Visibility.Collapsed;
+            False8.Visibility = Visibility.Collapsed;
+            True9.Visibility = Visibility.Visible;
+            False9.Visibility = Visibility.Visible;
+            True8.IsEnabled = false;
+            False8.IsEnabled = false;
+            True9.IsEnabled = false;
+            False9.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 920;
+            animation1.To = 621;
+            animation1.Duration = TimeSpan.FromSeconds(1);
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation1);
@@ -401,7 +924,251 @@ namespace ALabs.LessonIntro
 
             animation1.Completed += (sender, e) =>
             {
-                if (Canvas.GetTop(animatedObject) == 185)
+                if (Canvas.GetTop(animatedObject) == 621)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True9.IsEnabled = true;
+                    False9.IsEnabled = true;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True8_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            True8.Visibility = Visibility.Collapsed;
+            False8.Visibility = Visibility.Collapsed;
+            True9.Visibility = Visibility.Visible;
+            False9.Visibility = Visibility.Visible;
+            True8.IsEnabled = false;
+            False8.IsEnabled = false;
+            True9.IsEnabled = false;
+            False9.IsEnabled = false;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 920;
+            animation1.To = 621;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 621)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True9.IsEnabled = true;
+                    False9.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False9_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            True9.Visibility = Visibility.Collapsed;
+            False9.Visibility = Visibility.Collapsed;
+            True10.Visibility = Visibility.Visible;
+            False10.Visibility = Visibility.Visible;
+            True9.IsEnabled = false;
+            False9.IsEnabled = false;
+            True10.IsEnabled = false;
+            False10.IsEnabled = false;
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 621;
+            animation1.To = 366;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 366)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True10.IsEnabled = true;
+                    False10.IsEnabled = true;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True9_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            True9.Visibility = Visibility.Collapsed;
+            False9.Visibility = Visibility.Collapsed;
+            True10.Visibility = Visibility.Visible;
+            False10.Visibility = Visibility.Visible;
+            True9.IsEnabled = false;
+            False9.IsEnabled = false;
+            True10.IsEnabled = false;
+            False10.IsEnabled = false;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 621;
+            animation1.To = 366;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 366)
+                {
+
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    Debug.WriteLine("Endstate reached!");
+                    isAnimationInProgress = false;
+                    DisplayCurrentQuestionOnTvScreen();
+                    True10.IsEnabled = true;
+                    False10.IsEnabled = true;
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void False10_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+            
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 366;
+            animation1.To = 150;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 150)
+                {
+                    // Answer is False
+                    userScore = userScore + 1;
+                    UpdateUserScoreText();
+                    dotTimer.Stop();
+                    EndStateReached = true;
+                    isAnimationInProgress = false;
+
+                    BackToDashboard.Visibility = Visibility.Visible;
+
+                    True10.Visibility = Visibility.Collapsed;
+                    False10.Visibility = Visibility.Collapsed;
+
+                }
+            };
+
+            storyboard.Begin();
+        }
+
+        private void True10_Click(object sender, RoutedEventArgs e)
+        {
+            dotTimer.Start();
+
+            if (isAnimationInProgress)
+                return;
+            
+
+            isAnimationInProgress = true;
+            Debug.WriteLine(currentQuestionIndex + "dqweqwe");
+            MoveToNextQuestion();
+
+
+            DoubleAnimation animation1 = new DoubleAnimation();
+            animation1.From = 366;
+            animation1.To = 150;
+            animation1.Duration = TimeSpan.FromSeconds(1);
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(animation1);
+
+            Storyboard.SetTarget(animation1, animatedObject);
+            Storyboard.SetTargetProperty(animation1, new PropertyPath(Canvas.TopProperty));
+
+
+            animation1.Completed += (sender, e) =>
+            {
+                if (Canvas.GetTop(animatedObject) == 150)
                 {
 
                     UpdateUserScoreText();
@@ -410,33 +1177,16 @@ namespace ALabs.LessonIntro
                     Debug.WriteLine("Endstate reached!");
                     isAnimationInProgress = false;
 
-                    // No more questions, display the final score or handle game completion logic
-                    if (userScore == 1)
-                    {
-                        tvScreen.Text = $"Better luck next time!\n Your Score: {userScore}";
-                    }
-                    else if (userScore == 2)
-                    {
-                        tvScreen.Text = $"You're almost there!\n Your Score: {userScore}";
-                    }
-                    else if (userScore == 3)
-                    {
-                        tvScreen.Text = $"Very well done!\n Your Score: {userScore}";
-                    }
                     BackToDashboard.Visibility = Visibility.Visible;
-                    True1.Visibility = Visibility.Collapsed;
-                    False1.Visibility = Visibility.Collapsed;
-                    True2.Visibility = Visibility.Collapsed;
-                    False2.Visibility = Visibility.Collapsed;
-                    True3.Visibility = Visibility.Collapsed;
-                    False3.Visibility = Visibility.Collapsed;
+
+                    True10.Visibility = Visibility.Collapsed;
+                    False10.Visibility = Visibility.Collapsed;
 
                 }
             };
 
             storyboard.Begin();
         }
-
         // Dot Animation // 
         private void DotAnimationTimer()
         {
